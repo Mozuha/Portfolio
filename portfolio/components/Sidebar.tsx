@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-//import Link from 'next/link'
+import React, { useState, useCallback } from 'react'
 import { Link } from 'react-scroll'
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarContent } from 'react-pro-sidebar'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -10,35 +9,59 @@ import { MdContacts } from 'react-icons/md'
 import 'react-pro-sidebar/dist/css/styles.css'
 import styled from 'styled-components'
 
-const menuItems = [
+interface MenuItem {
+  id: number,
+  name: string,
+  color: string,
+  icon: object,
+  isActive: boolean,
+}
+
+const menuItems: MenuItem[] = [
   {
+    id: 0,
     name: 'Projects',
-    path: '/projects',
     color: '#00a4ac',
-    icon: <AiOutlineFolderOpen color={'#00a4ac'} size={42}/>
+    icon: <AiOutlineFolderOpen color={'#00a4ac'} size={42}/>,
+    isActive: false,
   },
   {
+    id: 1,
     name: 'Experiences',
-    path: '/experiences',
     color: '#338f85',
-    icon: <BiTrendingUp color={'#338f85'} size={42}/>
+    icon: <BiTrendingUp color={'#338f85'} size={42}/>,
+    isActive: false,
   },
   {
+    id: 2,
     name: 'About',
-    path: '/about',
     color: '#ed542a',
-    icon: <BsFillPersonFill color={'#ed542a'} size={42}/>
+    icon: <BsFillPersonFill color={'#ed542a'} size={42}/>,
+    isActive: false,
   },
   {
+    id: 3,
     name: 'Contact',
-    path: '/contact',
     color: '#e1ad01',
-    icon: <MdContacts color={'#e1ad01'} size={42}/>
+    icon: <MdContacts color={'#e1ad01'} size={42}/>,
+    isActive: false,
   }
 ]
 
 const Sidebar = (): JSX.Element => {
-  const [itemSelect, setItemSelect] = useState(false)
+  const [items, setItems] = useState(menuItems)  
+
+  const handleSetActive = useCallback((id: number) => {
+    let newMenuItems = [...items]
+    newMenuItems[id].isActive = true
+    setItems(newMenuItems)
+  }, [])
+
+  const handleSetInactive = useCallback((id: number) => {
+    let newMenuItems = [...items]
+    newMenuItems[id].isActive = false
+    setItems(newMenuItems)
+  }, [])
 
   return (
     <SidebarWrapper>
@@ -52,18 +75,17 @@ const Sidebar = (): JSX.Element => {
         </SidebarHeader>
         <SidebarContent>
           <Menu>
-            {/* {menuItems.map(c => (
-              <MenuItem className={c.name.toLowerCase()} icon={c.icon}><Link href={c.path}><a>{c.name}</a></Link></MenuItem>
-            ))} */}
             {menuItems.map(c => (
-              <MenuItem className={c.name.toLowerCase()} icon={c.icon}>
+              <MenuItem className={c.name.toLowerCase()} icon={c.icon} active={items[c.id].isActive}>
                 <Link
-                  activeClass='active' 
+                  activeClass='active-a' 
                   to={c.name.toLowerCase()}
                   spy={true}
                   smooth={true}
-                  offset={-70}
-                  duration={800}>
+                  offset={-100}
+                  duration={600}
+                  onSetActive={() => handleSetActive(c.id)}
+                  onSetInactive={() => handleSetInactive(c.id)}>
                     {c.name}
                 </Link>
               </MenuItem>
@@ -74,7 +96,6 @@ const Sidebar = (): JSX.Element => {
   </SidebarWrapper>
   )
 }
-
 
 const SidebarWrapper = styled.div(props => `
   position: fixed;
@@ -105,31 +126,16 @@ const SidebarWrapper = styled.div(props => `
     .pro-menu {
       a {
         color: ${props.theme.palette.text.primary};
-        font-size: 16px;
+        font-size: 17px;
       }
       .pro-menu-item {
-        &.projects {
-          &:hover, .active:before {
-            background-color: ${props.theme.palette.primary.dark};
-            transform: scale(.95);
-            border-left: 3px solid ${menuItems[0].color};
-          }
-        }
-        &:hover {
-          // background-color: ${props.theme.palette.primary.dark};
-          // transform: scale(.95);
-          // &.projects {
-          //   border-left: 3px solid ${menuItems[0].color};
-          // }
-          &.experiences {
-            border-left: 3px solid ${menuItems[1].color}; 
-          }
-          &.about {
-            border-left: 3px solid ${menuItems[2].color}; 
-          }
-          &.contact {
-            border-left: 3px solid ${menuItems[3].color}; 
-          }
+        &:hover, &.active {
+          background-color: ${props.theme.palette.primary.dark};
+          transform: scale(.95);
+          &.projects { border-left: 3px solid ${menuItems[0].color}; }
+          &.experiences { border-left: 3px solid ${menuItems[1].color}; }
+          &.about { border-left: 3px solid ${menuItems[2].color}; }
+          &.contact { border-left: 3px solid ${menuItems[3].color}; }
         }
         .pro-inner-item {
           margin: 10px 0px;

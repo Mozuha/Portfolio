@@ -21,6 +21,26 @@ const ContentWrapper = ({ id, children }: Props) => {
       {children}
       {children}
       {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
+      {children}
     </StyledBox>
   )
 }
