@@ -49,7 +49,7 @@ const menuItems: MenuItem[] = [
 ]
 
 const Sidebar = (): JSX.Element => {
-  const [items, setItems] = useState(menuItems)  
+  const [items, setItems] = useState<MenuItem[]>(menuItems)  
 
   const handleSetActive = useCallback((id: number) => {
     let newMenuItems = [...items]
@@ -62,6 +62,15 @@ const Sidebar = (): JSX.Element => {
     newMenuItems[id].isActive = false
     setItems(newMenuItems)
   }, [])
+
+  // [active0, setActive0] = useState(false)
+  // [active1, setActive1] = useState(false)
+  // activeList = [active0, active1]
+  // setActiveList = [setActive0, setActive1]
+
+  // handleEvent = (id) => {
+  //   setActiveList[id](true)
+  // }
 
   return (
     <SidebarWrapper>
