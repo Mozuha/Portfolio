@@ -55,7 +55,8 @@ const SubtitleWrapper = styled.h2`
   padding: 30px 25px;
   margin: 0;
   color: ${props => props.theme.palette.primary.main};
-  background-color: #008073;
+  //background-color: #008073;
+  background-color: #346751;
 `
 
 export default ContentWrapper

@@ -124,7 +124,7 @@ const SidebarWrapper = styled.div(props => `
       .pro-sidebar-layout {
         .pro-sidebar-header { cursor: pointer; }
         p {
-          font-size: 30px;
+          font-size: 1.75rem;
           padding: 0 10px 0 20px;
           color: ${props.theme.palette.text.primary};
         }
@@ -135,7 +135,7 @@ const SidebarWrapper = styled.div(props => `
     .pro-menu {
       a {
         color: ${props.theme.palette.text.primary};
-        font-size: 17px;
+        font-size: 1rem;
       }
       .pro-menu-item {
         &:hover, &.active {
