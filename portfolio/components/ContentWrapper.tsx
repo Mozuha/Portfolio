@@ -12,35 +12,6 @@ const ContentWrapper = ({ id, children }: Props) => {
     <StyledBox id={id}>
       <SubtitleWrapper>{id?.toUpperCase()}</SubtitleWrapper>
       {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
-      {children}
     </StyledBox>
   )
 }
