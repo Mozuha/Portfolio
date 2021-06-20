@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 400,
     },
     media: {
-      height: 250,
+      height: 0,
+      paddingTop: '70%',
     },
   })
 )

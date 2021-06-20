@@ -23,7 +23,8 @@ const Projects = (): JSX.Element => {
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      padding: '50px 70px',
+      margin: 0,
+      width: '100%',
     },
     item: {
       width: 345,
