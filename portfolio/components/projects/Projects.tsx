@@ -1,8 +1,8 @@
 import React from 'react'
 import { makeStyles, createStyles, Grid } from '@material-ui/core'
 import ContentWrapper from '../ContentWrapper'
-import ProjectWrapper from '../ProjectWrapper'
-import { projectInfos } from '../infos/project_infos'
+import ProjectWrapper from './ProjectWrapper'
+import { projectInfos } from './project_infos'
 
 const Projects = (): JSX.Element => {
   const classes = useStyles()

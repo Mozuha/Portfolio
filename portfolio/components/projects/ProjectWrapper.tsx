@@ -14,8 +14,8 @@ import { MdExpandLess } from 'react-icons/md'
 import { BiLinkExternal } from 'react-icons/bi'
 import { AiOutlineGithub } from 'react-icons/ai'
 import clsx from 'clsx'
-import theme from './theme'
-import { ProjectInfo } from '../interfaces/project'
+import theme from '../theme'
+import { ProjectInfo } from './types'
 
 type Props = {
   projectInfo: ProjectInfo

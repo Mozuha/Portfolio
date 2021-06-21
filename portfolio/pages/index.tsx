@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
 import Top from '../components/contents/Top'
-import Projects from '../components/contents/Projects'
+import Projects from '../components/projects/Projects'
 import Experiences from '../components/contents/Experiences'
 import About from '../components/contents/About'
 import Contact from '../components/contents/Contact'
