@@ -12,7 +12,7 @@ const Projects = (): JSX.Element => {
       <Grid container className={classes.root} spacing={5} justify='center'>
         {projectInfos.map(c => (
           <Grid item className={classes.item} xs={12} lg={4} xl={3}>
-            <ProjectWrapper projectInfo={c}></ProjectWrapper>
+            <ProjectWrapper projectInfo={c} />
           </Grid>
         ))}
       </Grid>

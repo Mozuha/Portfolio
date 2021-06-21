@@ -4,12 +4,18 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#faebd7',
-      dark: '#f9e6cc'
+      dark: '#f9e6cc',
     },
     text: {
-      primary: '#333'
-    }
-  }
+      primary: '#333',
+    },
+  },
+  typography: {
+    fontFamily: [
+      'Georgia',
+      'serif',
+    ].join(','),
+  },
 })
 
 export default theme
