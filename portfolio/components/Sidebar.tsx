@@ -84,8 +84,8 @@ const Sidebar = (): JSX.Element => {
         </SidebarHeader>
         <SidebarContent>
           <Menu>
-            {menuItems.map(c => (
-              <MenuItem className={c.name.toLowerCase()} icon={c.icon} active={items[c.id].isActive}>
+            {menuItems.map((c, idx) => (
+              <MenuItem key={idx} className={c.name.toLowerCase()} icon={c.icon} active={items[c.id].isActive}>
                 <Link
                   activeClass='active-a' 
                   to={c.name.toLowerCase()}
