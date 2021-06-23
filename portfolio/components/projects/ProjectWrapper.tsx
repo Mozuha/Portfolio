@@ -51,18 +51,23 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
             <MdExpandLess />
           </IconButton>
         </CardActions>
-        <Typography className={classes.description} variant='body2' color='textSecondary' component='p'>
+        <Typography className={classes.description} variant='body1' color='textSecondary' component='div'>
           {projectInfo.description}
-          <Typography 
-            className={clsx(classes.detail, {
-              [classes.detailVisible]: expanded,
-            })}
-            variant='body2'
-            color='textSecondary'
-            component='p'
-          >
-            {projectInfo.detail}
-          </Typography>
+          {projectInfo.detail?.map((c, idx) => (
+            <Typography
+              key={idx}
+              className={clsx(classes.detail, {
+                [classes.detailVisible]: expanded,
+              })}
+              variant='body2'
+              color='textSecondary'
+              component='p'
+            >
+              {/* seperate term and content */}
+              <b>{c.slice(0, c.indexOf(':')+1)}</b><br />
+              {c.slice(c.indexOf(':')+1)}
+            </Typography>
+          ))}
         </Typography>
         <CardActions
           className={clsx(classes.link, {
@@ -72,13 +77,13 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
         >
           {/* show icon only if the link is existing */}
           {typeof projectInfo.link === 'string' && 
-            <IconButton onClick={() => handleLinkClick(projectInfo.link)}>
-              <BiLinkExternal size={30}/>
+            <IconButton onClick={() => handleLinkClick(projectInfo.link)} title='Jump to the site'>
+              <BiLinkExternal size={28}/>
             </IconButton>
           }
           {typeof projectInfo.github === 'string' &&
-            <IconButton onClick={() => handleLinkClick(projectInfo.github)}>
-              <AiOutlineGithub size={30}/>
+            <IconButton onClick={() => handleLinkClick(projectInfo.github)} title='Jump to the repository'>
+              <AiOutlineGithub size={28}/>
             </IconButton>
           }
         </CardActions>
@@ -119,6 +124,7 @@ const useStyles = makeStyles((theme: Theme) =>
       gridColumn: '1 / 2',
       display: 'flex',
       alignItems: 'center',
+      lineHeight: 1,
     },
     action: {
       width: '50px',
@@ -140,13 +146,14 @@ const useStyles = makeStyles((theme: Theme) =>
     description: {
       gridRow: '2 / 3',
       gridColumn: '1 / 3',
-      padding: '12px 0',
+      padding: '8px 0 0 0',
     },
     detail: {
       opacity: 0,
       transition: theme.transitions.create('opacity', {
         duration: theme.transitions.duration.complex,
       }),
+      margin: '4px 0',
     },
     detailVisible: {
       opacity: 1,
@@ -156,8 +163,11 @@ const useStyles = makeStyles((theme: Theme) =>
       transition: theme.transitions.create('opacity', {
         duration: theme.transitions.duration.complex,
       }),
-      paddingLeft: 0,
+      paddingTop: 4,
       transform: 'translateX(-12px)',
+      '& .MuiIconButton-root': {
+        padding: '4px',
+      },
     },
     linkVisible: {
       opacity: 1,

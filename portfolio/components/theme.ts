@@ -8,6 +8,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: '#333',
+      secondary: '#777',
     },
   },
   typography: {

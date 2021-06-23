@@ -10,8 +10,8 @@ const Projects = (): JSX.Element => {
   return (
     <ContentWrapper id='projects'>
       <Grid container className={classes.root} spacing={5} justify='center'>
-        {projectInfos.map(c => (
-          <Grid item className={classes.item} xs={12} lg={4} xl={3}>
+        {projectInfos.map((c, idx) => (
+          <Grid key={idx} item className={classes.item} xs={12} lg={4} xl={3}>
             <ProjectWrapper projectInfo={c} />
           </Grid>
         ))}
