@@ -2,16 +2,16 @@ import Layout from '../components/Layout'
 import Top from '../components/contents/Top'
 import Projects from '../components/projects/Projects'
 import Experiences from '../components/experiences/Experiences'
-import About from '../components/contents/About'
+import About from '../components/about/About'
 import Contact from '../components/contents/Contact'
 
 const IndexPage = (): JSX.Element => {
   return (
   <Layout>
     <Top />
-    <Projects />
-    <Experiences />
     <About />
+    <Experiences />
+    <Projects />
     <Contact />
   </Layout>
   )
