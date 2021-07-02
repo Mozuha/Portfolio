@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Grid } from '@material-ui/core'
 import ContentWrapper from '../ContentWrapper'
 import ExperienceWrapper from './ExperienceWrapper'
 import { experiencesInfos } from './experience_infos'
-import theme from '../theme'
+import theme from '../../theme'
 
 const Experiences = (): JSX.Element => {
   const classes = useStyles(theme)

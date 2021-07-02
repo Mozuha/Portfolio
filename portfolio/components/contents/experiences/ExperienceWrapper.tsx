@@ -8,7 +8,7 @@ import {
   Divider,
   Typography
 } from '@material-ui/core'
-import theme from '../theme'
+import theme from '../../theme'
 import { ExperiencesInfo } from './types'
 
 type Props = {
