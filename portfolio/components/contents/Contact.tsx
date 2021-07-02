@@ -10,7 +10,7 @@ const Contact = (): JSX.Element => {
     </ContentWrapper>
   )
 }
-
+//
 // const ContactBox = styled(Box)`
 //   position: relative;
 //   top: 97.5vh;
