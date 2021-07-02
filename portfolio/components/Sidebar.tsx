@@ -131,6 +131,7 @@ const Sidebar = (): JSX.Element => {
 
 const SidebarWrapper = styled.div(props => `
   position: fixed;
+  z-index: 10000;
   top: 0;
   left: 0;
   width: 200px;

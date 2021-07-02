@@ -19,7 +19,7 @@ const TopWrapper = styled.div`
   padding: 0;
   margin: 0;
   top: 0;
-  background: url(/img/arches_high.jpg) no-repeat left/auto;
+  background: url(/img/arches_high.jpg) no-repeat left/cover;
 `
 const Overlay = styled.div`
   height: 100vh;
