@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '@material-ui/core'
-import styled from 'styled-components'
+// import { Box } from '@material-ui/core'
+// import styled from 'styled-components'
 import ContentWrapper from './ContentWrapper'
 
 const Contact = (): JSX.Element => {
@@ -10,7 +10,7 @@ const Contact = (): JSX.Element => {
     </ContentWrapper>
   )
 }
-
+//
 // const ContactBox = styled(Box)`
 //   position: relative;
 //   top: 97.5vh;
