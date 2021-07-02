@@ -5,7 +5,9 @@ import {
   Theme,
   Grid,
   Paper,
-  Typography
+  Typography,
+  Avatar,
+  Divider
 } from '@material-ui/core'
 import ContentWrapper from '../ContentWrapper'
 import theme from '../theme'
@@ -18,6 +20,8 @@ const About = (): JSX.Element => {
       <Grid container className={classes.root} spacing={5} justify='center'>
         <Grid item className={classes.item}>
           <Paper className={classes.paper}>
+            <Avatar alt='Mizuki Hashimoto' src='/img/profpic.jpg' className={classes.avatar} />
+            <Divider />
             <Typography variant='h6' component='p'>
               I am Mizuki Hashimoto, recently graduated from Juniata College
               with a major in Computer Science and a minor in Chemistry.
@@ -50,16 +54,22 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     item: {
       margin: 10,
+      maxWidth: 900,
     },
     paper: {
       backgroundColor: theme.palette.primary.dark,
       boxShadow: theme.shadows[5],
-      //width: 650,
-      //height: 400,
       padding: 50,
       '& p': {
         margin: '20px 0',
       },
+    },
+    avatar: {
+      margin: 'auto',
+      marginBottom: 30,
+      width: 250,
+      height: 250,
+      boxShadow: theme.shadows[10],
     },
   })
 )
