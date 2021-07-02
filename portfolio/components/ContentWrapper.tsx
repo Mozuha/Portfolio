@@ -1,25 +1,19 @@
 import React, { ReactNode } from 'react'
-import { Box } from '@material-ui/core'
 import styled from 'styled-components'
 
 type Props = { 
-  id?: string
+  id: string
   children?: ReactNode 
 }
 
 const ContentWrapper = ({ id, children }: Props) => {
   return (
-    <StyledBox id={id}>
-      <SubtitleWrapper>{id?.toUpperCase()}</SubtitleWrapper>
+    <div id={id}>
+      <SubtitleWrapper>{id.toUpperCase()}</SubtitleWrapper>
       {children}
-    </StyledBox>
+    </div>
   )
 }
-
-const StyledBox = styled(Box)`
-  position: relative;
-  top: 100vh;
-`
 
 const SubtitleWrapper = styled.h2`
   font-weight: 200;

@@ -28,10 +28,7 @@ const useStyles = makeStyles(() =>
       width: '100%',
     },
     item: {
-      width: 765,
-      height: 340,
       maxWidth: 765,
-      maxHeight: 340,
       margin: '10px',
     },
   })

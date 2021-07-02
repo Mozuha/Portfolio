@@ -14,8 +14,7 @@ const Top = (): JSX.Element => {
 }
 
 const TopWrapper = styled.div`
-  position: absolute;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -23,8 +22,7 @@ const TopWrapper = styled.div`
   background: url(/img/arches_high.jpg) no-repeat left/auto;
 `
 const Overlay = styled.div`
-  position: absolute;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -35,12 +33,13 @@ const Overlay = styled.div`
 const WelcomeMsgWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 70px;
+  margin: 0 70px;
   h1 {
     font-size: 2.8rem;
     color: #efbf80;
     text-align: right;
     text-shadow: 1px 1px #877fef;
+    user-select: none;
   }
 `
 

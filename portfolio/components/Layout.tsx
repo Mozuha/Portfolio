@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react'
 import Head from 'next/head'
-import { Box, ThemeProvider as MaterialThemeProvider } from '@material-ui/core'
+import { ThemeProvider as MaterialThemeProvider } from '@material-ui/core'
 import styled, {ThemeProvider as StyledThemeProvider} from 'styled-components'
 
 import theme from './theme'
@@ -18,35 +18,22 @@ const Layout = ({ children }: Props) => {
   return (
     <MaterialThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
-        <LayoutBox>
-          <Head><title>Portfolio</title></Head>
-          <SidebarBox><Sidebar /></SidebarBox>
-          <ContentBox>
-            {children}
-          </ContentBox>
-        </LayoutBox>
+        <Head><title>Portfolio</title></Head>
+        <Sidebar />
+        <ContentsWrapper>
+          {children}
+        </ContentsWrapper>
       </StyledThemeProvider>
     </MaterialThemeProvider>
   )
 }
 
-const LayoutBox = styled(Box)`
-  display: grid;
-  grid-template-rows: 100vh;
-  grid-template-columns: 200px 1fr;
-  padding: 0;
-`
-
-const SidebarBox = styled(Box)`
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-`
-
-const ContentBox = styled(Box)`
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-  position: relative;
-  box-shadow: inset 2px 0 5px 0 rgba(0, 0, 0, .3);
+const ContentsWrapper = styled.div`
+  margin-left: 200px;
+  @media screen and (max-width: 1000px) {
+    margin-left: 0;
+    margin-top: 64px;
+  }
 `
 
 export default Layout

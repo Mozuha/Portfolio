@@ -1,12 +1,12 @@
-import React, { useState, useCallback } from 'react'
-import { Link } from 'react-scroll'
+import React, { useState, useCallback, useEffect } from 'react'
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarContent } from 'react-pro-sidebar'
+import 'react-pro-sidebar/dist/css/styles.css'
+import Link from 'react-scroll/modules/components/Link'
+import Slide from '@material-ui/core/Slide'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineFolderOpen } from 'react-icons/ai'
 import { BiTrendingUp } from 'react-icons/bi'
-import { MdContacts } from 'react-icons/md'
-
-import 'react-pro-sidebar/dist/css/styles.css'
+import { MdContacts, MdMenu } from 'react-icons/md'
 import styled from 'styled-components'
 
 interface MenuItem {
@@ -29,7 +29,7 @@ const menuItems: MenuItem[] = [
     id: 1,
     name: 'Experiences',
     color: '#338f85',
-    icon: <BiTrendingUp color={'#338f85'} size={42}/>,
+    icon: <BiTrendingUp color={'#338f85'} size={42} />,
     isActive: false,
   },
   {
@@ -43,13 +43,24 @@ const menuItems: MenuItem[] = [
     id: 3,
     name: 'Contact',
     color: '#e1ad01',
-    icon: <MdContacts color={'#e1ad01'} size={42}/>,
+    icon: <MdContacts color={'#e1ad01'} size={42} />,
     isActive: false,
   }
 ]
 
 const Sidebar = (): JSX.Element => {
+  const [mediaMatched, setMediaMatched] = useState(false)
+  const [toggled, setToggled] = useState(false)
   const [items, setItems] = useState<MenuItem[]>(menuItems)  
+
+  // avoid 'window is not defined' error which probably caused by SSR
+  useEffect(() => {
+    // initial check
+    setMediaMatched(window.matchMedia('(max-width: 1000px)').matches)
+
+    window.matchMedia('(max-width: 1000px)').onchange = (e) =>
+    setMediaMatched(e.matches)
+  })
 
   const handleSetActive = useCallback((id: number) => {
     let newMenuItems = [...items]
@@ -63,6 +74,7 @@ const Sidebar = (): JSX.Element => {
     setItems(newMenuItems)
   }, [])
 
+  // alternative way to set active (if items are few)
   // [active0, setActive0] = useState(false)
   // [active1, setActive1] = useState(false)
   // activeList = [active0, active1]
@@ -72,35 +84,46 @@ const Sidebar = (): JSX.Element => {
   //   setActiveList[id](true)
   // }
 
+  const handleMenuClick = () => setToggled(!toggled)
+
   return (
     <SidebarWrapper>
       <ProSidebar>
         <SidebarHeader>
-          <Link
-            to='top'
-            smooth={true}>
-              <p>Mizuki Hashimoto</p>
+          {mediaMatched && <MdMenu color={'#333'} size={42} onClick={handleMenuClick} />}
+          <Link to='top' smooth={true}>
+            <span className='logo'>Mizuki Hashimoto</span>
           </Link>
         </SidebarHeader>
-        <SidebarContent>
-          <Menu>
-            {menuItems.map((c, idx) => (
-              <MenuItem key={idx} className={c.name.toLowerCase()} icon={c.icon} active={items[c.id].isActive}>
-                <Link
-                  activeClass='active-a' 
-                  to={c.name.toLowerCase()}
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={600}
-                  onSetActive={() => handleSetActive(c.id)}
-                  onSetInactive={() => handleSetInactive(c.id)}>
-                    {c.name}
-                </Link>
-              </MenuItem>
-            ))}
-          </Menu>
-        </SidebarContent>
+        <Slide direction='right' in={(!mediaMatched || toggled)} mountOnEnter unmountOnExit>
+          <SidebarContent>
+            <div className='inner-box'>
+              <Menu>
+                {menuItems.map((c, idx) => (
+                  <MenuItem
+                    key={idx}
+                    className={c.name.toLowerCase()}
+                    icon={c.icon}
+                    active={items[c.id].isActive}
+                  >
+                    <Link
+                      activeClass='active-a' 
+                      to={c.name.toLowerCase()}
+                      spy={true}
+                      smooth={true}
+                      offset={-100}
+                      duration={600}
+                      onSetActive={() => handleSetActive(c.id)}
+                      onSetInactive={() => handleSetInactive(c.id)}
+                    >
+                      {c.name}
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </div>
+          </SidebarContent>
+        </Slide>
       </ProSidebar>
   </SidebarWrapper>
   )
@@ -111,46 +134,92 @@ const SidebarWrapper = styled.div(props => `
   top: 0;
   left: 0;
   width: 200px;
-  box-shadow: 2px 0 5px 0 rgba(0, 0, 0, .3);
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    height: auto;
+  }
   .pro-sidebar { 
     height: 100vh;
     width: 100%;
     min-width: 100%;
+    box-shadow: 2px 0 5px 0 rgba(0, 0, 0, .3);
     .pro-sidebar-inner { 
       background-color: inherit;
-      box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
       over-flow-y: hidden;
-      margin: 10px 0px;
       .pro-sidebar-layout {
-        .pro-sidebar-header { cursor: pointer; }
-        p {
-          font-size: 1.75rem;
-          padding: 0 10px 0 20px;
-          color: ${props.theme.palette.text.primary};
+        .pro-sidebar-header { 
+          cursor: pointer;
+          padding: 40px;
+          padding-left: 20px;
+          .logo {
+            font-size: 1.75rem;
+            color: ${props.theme.palette.text.primary};
+            user-select: none;
+          }
+          @media screen and (max-width: 1000px) {
+            display: grid;
+            grid-template-rows: 64px;
+            grid-template-columns: 64px 1fr;
+            text-align: center;
+            padding: 0;
+            border-bottom: 0;
+            cursor: default;
+            background-color: ${props.theme.palette.primary.main};
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+            svg {
+              grid-row: 1 / 2;
+              grid-column: 1 / 2;
+              margin: auto;
+              cursor: pointer;
+              z-index: 1010;
+            }
+            a { 
+              grid-row: 1 / 2;
+              grid-column: 1 / 3; 
+              .logo {
+                line-height: 64px;
+                vertical-align: middle;
+                transform: translate(-32px);
+                cursor: pointer;
+              }
+            }
+          }
         }
-        a { text-decoration: none; }
-        ul { padding: 0 5px; }
-      }
-    }
-    .pro-menu {
-      a {
-        color: ${props.theme.palette.text.primary};
-        font-size: 1rem;
-      }
-      .pro-menu-item {
-        &:hover, &.active {
-          background-color: ${props.theme.palette.primary.dark};
-          transform: scale(.95);
-          &.about { border-left: 3px solid ${menuItems[0].color}; }
-          &.experiences { border-left: 3px solid ${menuItems[1].color}; }
-          &.projects { border-left: 3px solid ${menuItems[2].color}; }
-          &.contact { border-left: 3px solid ${menuItems[3].color}; }
-        }
-        .pro-inner-item {
-          margin: 10px 0px;
-          padding: 8px 15px;
-          &:focus { color: none; }
-          .pro-icon-wrapper { margin-right: 13px; }
+        .pro-sidebar-content {
+          @media screen and (max-width: 1000px) {
+            width: 200px;
+            background-color: ${props.theme.palette.primary.main};
+            box-shadow: 2px 0 5px -2px rgba(0, 0, 0, .3);
+            .inner-box {
+              width: inherit;
+              height: 100%;
+              box-shadow: inset 0 3px 5px -2px rgba(0, 0, 0, .3);
+            }
+          }
+          .pro-menu {
+            ul { padding: 0 5px; }
+            a {
+              color: ${props.theme.palette.text.primary};
+              font-size: 1rem;
+              user-select: none;
+            }
+            .pro-menu-item {
+              &:hover, &.active {
+                background-color: ${props.theme.palette.primary.dark};
+                transform: scale(.95);
+                &.about { border-left: 3px solid ${menuItems[0].color}; }
+                &.experiences { border-left: 3px solid ${menuItems[1].color}; }
+                &.projects { border-left: 3px solid ${menuItems[2].color}; }
+                &.contact { border-left: 3px solid ${menuItems[3].color}; }
+              }
+              .pro-inner-item {
+                margin: 10px 0px;
+                padding: 8px 15px;
+                &:focus { color: none; }
+                .pro-icon-wrapper { margin-right: 13px; }
+              }
+            }
+          }
         }
       }
     }
