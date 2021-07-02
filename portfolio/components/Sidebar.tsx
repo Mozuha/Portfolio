@@ -20,9 +20,9 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     id: 0,
-    name: 'Projects',
-    color: '#00a4ac',
-    icon: <AiOutlineFolderOpen color={'#00a4ac'} size={42}/>,
+    name: 'About',
+    color: '#ed542a',
+    icon: <BsFillPersonFill color={'#ed542a'} size={42}/>,
     isActive: false,
   },
   {
@@ -34,9 +34,9 @@ const menuItems: MenuItem[] = [
   },
   {
     id: 2,
-    name: 'About',
-    color: '#ed542a',
-    icon: <BsFillPersonFill color={'#ed542a'} size={42}/>,
+    name: 'Projects',
+    color: '#00a4ac',
+    icon: <AiOutlineFolderOpen color={'#00a4ac'} size={42}/>,
     isActive: false,
   },
   {
@@ -141,9 +141,9 @@ const SidebarWrapper = styled.div(props => `
         &:hover, &.active {
           background-color: ${props.theme.palette.primary.dark};
           transform: scale(.95);
-          &.projects { border-left: 3px solid ${menuItems[0].color}; }
+          &.about { border-left: 3px solid ${menuItems[0].color}; }
           &.experiences { border-left: 3px solid ${menuItems[1].color}; }
-          &.about { border-left: 3px solid ${menuItems[2].color}; }
+          &.projects { border-left: 3px solid ${menuItems[2].color}; }
           &.contact { border-left: 3px solid ${menuItems[3].color}; }
         }
         .pro-inner-item {
