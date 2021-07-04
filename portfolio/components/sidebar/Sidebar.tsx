@@ -49,7 +49,6 @@ const Sidebar = (): JSX.Element => {
                   to={c.name.toLowerCase()}
                   spy={true}
                   smooth={true}
-                  offset={-100}
                   duration={600}
                   onSetActive={() => handleActive(c.id, true)}
                   onSetInactive={() => handleActive(c.id, false)}

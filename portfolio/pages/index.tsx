@@ -4,7 +4,7 @@ import About from '../components/contents/about/About'
 import Experiences from '../components/contents/experiences/Experiences'
 import Projects from '../components/contents/projects/Projects'
 import Skills from '../components/contents/skills/Skills'
-import Contact from '../components/contents/Contact'
+import Contact from '../components/contents/contact/Contact'
 
 const IndexPage = (): JSX.Element => {
   return (
