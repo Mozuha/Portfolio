@@ -8,7 +8,9 @@ import {
   CardContent,
   CardActions,
   IconButton,
-  Typography
+  Typography,
+  Collapse,
+  Fade
 } from '@material-ui/core'
 import { MdExpandLess } from 'react-icons/md'
 import { BiLinkExternal } from 'react-icons/bi'
@@ -29,12 +31,12 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
 
   return (
     <Card className={classes.card}>
-      <CardMedia
-        className={clsx(classes.media, {
-          [classes.mediaClose]: expanded,
-        })}
-        image={projectInfo.image}
-      />
+      <Collapse in={!expanded} mountOnEnter unmountOnExit>
+        <CardMedia
+          className={classes.media}
+          image={projectInfo.image}
+        />
+      </Collapse>
       <CardContent className={classes.content}>
         <Typography className={classes.title} gutterBottom variant='h5' component='h3'>
           {projectInfo.title}
@@ -54,39 +56,39 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
         <Typography className={classes.description} variant='body1' color='textSecondary' component='div'>
           {projectInfo.description}
           {projectInfo.detail?.map((c, idx) => (
-            <Typography
-              key={idx}
-              className={clsx(classes.detail, {
-                [classes.detailVisible]: expanded,
-              })}
-              variant='body2'
-              color='textSecondary'
-              component='p'
-            >
-              {/* seperate term and content */}
-              <b>{c.slice(0, c.indexOf(':')+1)}</b><br />
-              {c.slice(c.indexOf(':')+1)}
-            </Typography>
+            <Fade in={expanded} timeout={375} mountOnEnter unmountOnExit>
+              <Typography
+                key={idx}
+                className={classes.detail}
+                variant='body2'
+                color='textSecondary'
+                component='p'
+              >
+                {/* seperate term and content */}
+                <b>{c.slice(0, c.indexOf(':')+1)}</b><br />
+                {c.slice(c.indexOf(':')+1)}
+              </Typography>
+            </Fade>
           ))}
         </Typography>
-        <CardActions
-          className={clsx(classes.link, {
-            [classes.linkVisible]: expanded,
-          })}
-          disableSpacing
-        >
-          {/* show icon only if the link is existing */}
-          {typeof projectInfo.link === 'string' && 
-            <IconButton onClick={() => handleLinkClick(projectInfo.link)} title='Jump to the site'>
-              <BiLinkExternal size={28}/>
-            </IconButton>
-          }
-          {typeof projectInfo.github === 'string' &&
-            <IconButton onClick={() => handleLinkClick(projectInfo.github)} title='Jump to the repository'>
-              <AiOutlineGithub size={28}/>
-            </IconButton>
-          }
-        </CardActions>
+        <Fade in={expanded} timeout={375} mountOnEnter unmountOnExit>
+          <CardActions
+            className={classes.link}
+            disableSpacing
+          >
+            {/* show icon only if the link is existing */}
+            {typeof projectInfo.link === 'string' && 
+              <IconButton onClick={() => handleLinkClick(projectInfo.link)} title='Jump to the site'>
+                <BiLinkExternal size={28}/>
+              </IconButton>
+            }
+            {typeof projectInfo.github === 'string' &&
+              <IconButton onClick={() => handleLinkClick(projectInfo.github)} title='Jump to the repository'>
+                <AiOutlineGithub size={28}/>
+              </IconButton>
+            }
+          </CardActions>
+        </Fade>
       </CardContent>
     </Card>
   )
@@ -103,11 +105,6 @@ const useStyles = makeStyles((theme: Theme) =>
     media: {
       height: 0,
       paddingTop: '70%',
-      transitionProperty: 'padding-top',
-      transitionDuration: '0.5s',
-    },
-    mediaClose: {
-      paddingTop: 0,
     },
     content: {
       display: 'grid',
@@ -149,28 +146,14 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '8px 0 0 0',
     },
     detail: {
-      opacity: 0,
-      transition: theme.transitions.create('opacity', {
-        duration: theme.transitions.duration.complex,
-      }),
       margin: '4px 0',
     },
-    detailVisible: {
-      opacity: 1,
-    },
     link: {
-      opacity: 0,
-      transition: theme.transitions.create('opacity', {
-        duration: theme.transitions.duration.complex,
-      }),
       paddingTop: 4,
       transform: 'translateX(-12px)',
       '& .MuiIconButton-root': {
         padding: '4px',
       },
-    },
-    linkVisible: {
-      opacity: 1,
     },
   })
 )
