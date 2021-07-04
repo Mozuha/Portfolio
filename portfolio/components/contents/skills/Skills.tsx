@@ -31,24 +31,24 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     item: {
-      width: 100,
-      height: 100,
-      maxWidth: 100,
-      maxHeight: 100,
+      width: 110,
+      height: 110,
+      maxWidth: 110,
+      maxHeight: 110,
       margin: 20,
       textAlign: 'center',
     },
     paper: {
       backgroundColor: theme.palette.primary.dark,
-      width: 80,
-      height: 80,
+      width: 90,
+      height: 90,
       padding: 10,
       '& img': {
         marginTop: 6,
       },
       '& p': {
         margin: 0,
-        marginTop: 6,
+        marginTop: 12,
       }
     },
   })
