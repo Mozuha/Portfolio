@@ -8,7 +8,7 @@ import {
   Divider,
   Typography
 } from '@material-ui/core'
-import theme from '../../theme'
+
 import { ExperiencesInfo } from './types'
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 }
 
 const ExperienceWrapper = ({ experiencesInfo }: Props): JSX.Element => {
-  const classes = useStyles(theme)
+  const classes = useStyles()
 
   return (
     <Card className={classes.card}>

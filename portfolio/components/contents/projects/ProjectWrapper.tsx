@@ -16,7 +16,7 @@ import { MdExpandLess } from 'react-icons/md'
 import { BiLinkExternal } from 'react-icons/bi'
 import { AiOutlineGithub } from 'react-icons/ai'
 import clsx from 'clsx'
-import theme from '../../theme'
+
 import { ProjectInfo } from './types'
 
 type Props = {
@@ -24,7 +24,7 @@ type Props = {
 }
 
 const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
-  const classes = useStyles(theme)
+  const classes = useStyles()
   const [expanded, setExpanded] = useState(false)
   const handleExpandClick = () => setExpanded(!expanded)
   const handleLinkClick = (link: string | undefined) => window.open(link, '_blank')

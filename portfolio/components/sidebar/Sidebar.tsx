@@ -105,7 +105,8 @@ const SidebarWrapper = styled.div(props => `
                 &.about { border-left: 3px solid ${menuItems[0].color}; }
                 &.experiences { border-left: 3px solid ${menuItems[1].color}; }
                 &.projects { border-left: 3px solid ${menuItems[2].color}; }
-                &.contact { border-left: 3px solid ${menuItems[3].color}; }
+                &.skills { border-left: 3px solid ${menuItems[3].color}; }
+                &.contact { border-left: 3px solid ${menuItems[4].color}; }
               }
               .pro-inner-item {
                 margin: 10px 0px;

@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles, createStyles, Grid } from '@material-ui/core'
+
 import ContentWrapper from '../ContentWrapper'
 import ExperienceWrapper from './ExperienceWrapper'
 import { experiencesInfos } from './experienceInfo'
-import theme from '../../theme'
 
 const Experiences = (): JSX.Element => {
-  const classes = useStyles(theme)
+  const classes = useStyles()
 
   return (
     <ContentWrapper id='experiences'>

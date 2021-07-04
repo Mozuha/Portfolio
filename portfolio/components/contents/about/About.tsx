@@ -9,11 +9,11 @@ import {
   Avatar,
   Divider
 } from '@material-ui/core'
+
 import ContentWrapper from '../ContentWrapper'
-import theme from '../../theme'
 
 const About = (): JSX.Element => {
-  const classes = useStyles(theme)
+  const classes = useStyles()
 
   return (
     <ContentWrapper id='about'>

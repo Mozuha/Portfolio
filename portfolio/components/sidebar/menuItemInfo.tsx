@@ -1,4 +1,4 @@
-import { BsFillPersonFill } from 'react-icons/bs'
+import { BsFillPersonFill, BsBarChartFill } from 'react-icons/bs'
 import { AiOutlineFolderOpen } from 'react-icons/ai'
 import { BiTrendingUp } from 'react-icons/bi'
 import { MdContacts } from 'react-icons/md'
@@ -23,15 +23,22 @@ export const menuItems: MenuItemInfo[] = [
   {
     id: 2,
     name: 'Projects',
-    color: '#00a4ac',
-    icon: <AiOutlineFolderOpen color={'#00a4ac'} size={42}/>,
+    color: '#9e9ee8',
+    icon: <AiOutlineFolderOpen color={'#9e9ee8'} size={42}/>,
     isActive: false,
   },
   {
     id: 3,
+    name: 'Skills',
+    color: '#00a4ac',
+    icon: <BsBarChartFill color={'#00a4ac'} size={42} />,
+    isActive: false,
+  },
+  {
+    id: 4,
     name: 'Contact',
     color: '#e1ad01',
     icon: <MdContacts color={'#e1ad01'} size={42} />,
     isActive: false,
-  }
+  },
 ]
