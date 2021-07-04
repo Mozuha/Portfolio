@@ -1,25 +1,34 @@
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode, useState, useEffect } from 'react'
 import Head from 'next/head'
 import { ThemeProvider as MaterialThemeProvider } from '@material-ui/core'
 import styled, {ThemeProvider as StyledThemeProvider} from 'styled-components'
 
 import theme from './theme'
-import Sidebar from './Sidebar'
+import Sidebar from './sidebar/Sidebar'
+import SidebarMobile from './sidebar/SidebarMobile'
 
 type Props = { children?: ReactNode }
 
 const Layout = ({ children }: Props) => {
+  const [mediaMatched, setMediaMatched] = useState(false)
+
   useEffect(() => {
     document.body.style.margin = '0'
     document.body.style.fontFamily = 'Georgia, serif'
     document.body.style.backgroundColor = theme.palette.primary.main
+
+    // avoid 'window is not defined' error which probably caused by SSR
+    setMediaMatched(window.matchMedia('(max-width: 1000px)').matches)  // initial check
+
+    window.matchMedia('(max-width: 1000px)').onchange = (e) =>
+      setMediaMatched(e.matches)
   })
 
   return (
     <MaterialThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
         <Head><title>Portfolio</title></Head>
-        <Sidebar />
+        {!mediaMatched ? <Sidebar /> : <SidebarMobile />}
         <ContentsWrapper>
           {children}
         </ContentsWrapper>

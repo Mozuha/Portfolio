@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles, createStyles, Grid } from '@material-ui/core'
 import ContentWrapper from '../ContentWrapper'
 import ExperienceWrapper from './ExperienceWrapper'
-import { experiencesInfos } from './experience_infos'
+import { experiencesInfos } from './experienceInfo'
 import theme from '../../theme'
 
 const Experiences = (): JSX.Element => {
