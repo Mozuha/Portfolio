@@ -47,11 +47,12 @@ export const projectInfos: ProjectInfo[] = [
   },
   {
     title: 'Portfolio',
-    image: '/img/arches_med.jpg',
+    image: '/img/portfolio.png',
     description: 'My Portfolio',
     detail: [
       'Purpose: Learn React framework.',
       'Tech Stack: TypeScript, React, Next.js',
+      'Note: Currently working on the feature to switch to Japanese.'
     ],
   },
 ]

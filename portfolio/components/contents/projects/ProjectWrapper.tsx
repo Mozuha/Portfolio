@@ -56,9 +56,8 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
         <Typography className={classes.description} variant='body1' color='textSecondary' component='div'>
           {projectInfo.description}
           {projectInfo.detail?.map((c, idx) => (
-            <Fade in={expanded} timeout={375} mountOnEnter unmountOnExit>
+            <Fade key={idx} in={expanded} timeout={375} mountOnEnter unmountOnExit>
               <Typography
-                key={idx}
                 className={classes.detail}
                 variant='body2'
                 color='textSecondary'
@@ -143,7 +142,7 @@ const useStyles = makeStyles((theme: Theme) =>
     description: {
       gridRow: '2 / 3',
       gridColumn: '1 / 3',
-      padding: '8px 0 0 0',
+      padding: '8px 12px 0 0',
     },
     detail: {
       margin: '4px 0',
