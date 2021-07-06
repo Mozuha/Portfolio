@@ -70,6 +70,10 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 250,
       height: 250,
       boxShadow: theme.shadows[10],
+      transition: 'transform 0.5s',
+      '&:hover': {
+        transform: 'rotate(-5deg) scale(1.1)',
+      },
     },
   })
 )
