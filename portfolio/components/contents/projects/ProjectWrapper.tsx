@@ -77,13 +77,21 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
           >
             {/* show icon only if the link is existing */}
             {typeof projectInfo.link === 'string' && 
-              <IconButton onClick={() => handleLinkClick(projectInfo.link)} title='Jump to the site'>
-                <BiLinkExternal size={28}/>
+              <IconButton
+                className={classes.linkIcon}
+                onClick={() => handleLinkClick(projectInfo.link)}
+                title='Jump to the site'
+              >
+                <BiLinkExternal size={28} />
               </IconButton>
             }
             {typeof projectInfo.github === 'string' &&
-              <IconButton onClick={() => handleLinkClick(projectInfo.github)} title='Jump to the repository'>
-                <AiOutlineGithub size={28}/>
+              <IconButton
+                className={classes.githubIcon}
+                onClick={() => handleLinkClick(projectInfo.github)}
+                title='Jump to the repository'
+              >
+                <AiOutlineGithub size={28} />
               </IconButton>
             }
           </CardActions>
@@ -152,6 +160,16 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'translateX(-12px)',
       '& .MuiIconButton-root': {
         padding: '4px',
+      },
+    },
+    linkIcon: {
+      '&:hover': {
+        color: '#346751',
+      },
+    },
+    githubIcon: {
+      '&:hover': {
+        color: '#333',
       },
     },
   })
