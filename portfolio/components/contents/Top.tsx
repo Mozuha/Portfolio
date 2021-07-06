@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Slide } from '@material-ui/core'
 import styled from 'styled-components'
 
 const Top = (): JSX.Element => {
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(true)
+  })
+
   return (
     <TopWrapper id='top'>
       <Overlay>
         <WelcomeMsgWrapper>
-          <h1>Hello!<br />I'm Mizuki</h1>
+          <Slide
+            direction='left'
+            in={loaded}
+            timeout={1000}
+            mountOnEnter
+            unmountOnExit
+          >
+            <h1>Hello!<br />I'm Mizuki</h1>
+          </Slide>
         </WelcomeMsgWrapper>
       </Overlay>
     </TopWrapper>
