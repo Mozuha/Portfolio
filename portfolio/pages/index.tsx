@@ -5,6 +5,7 @@ import Experiences from '../components/contents/experiences/Experiences'
 import Projects from '../components/contents/projects/Projects'
 import Skills from '../components/contents/skills/Skills'
 import Contact from '../components/contents/contact/Contact'
+import Footer from '../components/contents/Footer'
 
 const IndexPage = (): JSX.Element => {
   return (
@@ -15,6 +16,7 @@ const IndexPage = (): JSX.Element => {
     <Projects />
     <Skills />
     <Contact />
+    <Footer />
   </Layout>
   )
 }
