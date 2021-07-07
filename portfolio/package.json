@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
-    "serve": "yarn build && serve ./out"
+    "export": "yarn build && next export",
+    "serve": "yarn export && serve ./out"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
