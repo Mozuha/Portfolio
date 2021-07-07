@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect, useRef } from 'react'
+import React, { ReactNode, useState, useEffect } from 'react'
 import Head from 'next/head'
 import { ThemeProvider as MaterialThemeProvider } from '@material-ui/core'
 import styled, {ThemeProvider as StyledThemeProvider} from 'styled-components'
@@ -11,31 +11,28 @@ type Props = { children?: ReactNode }
 
 const Layout = ({ children }: Props) => {
   const [isMediaMatched, setIsMediaMatched] = useState(false)
-  const isInitialMount = useRef(true)
 
   useEffect(() => {
-    if (isInitialMount.current) {
       document.body.style.margin = '0'
       document.body.style.fontFamily = 'Georgia, serif'
       document.body.style.backgroundColor = theme.palette.primary.main
 
       // avoid 'window is not defined' error which probably caused by SSR
       setIsMediaMatched(window.matchMedia('(max-width: 1000px)').matches)  // initial check
+  }, [])
 
-      isInitialMount.current = false
-    } else {
-      window.matchMedia('(max-width: 1000px)').onchange = (e) =>
+  useEffect(() => {
+    window.matchMedia('(max-width: 1000px)').onchange = (e) =>
         setIsMediaMatched(e.matches)
       
-      // clean up
-      return () => { window.matchMedia('(max-width: 1000px)').onchange = null }
-    }
+    // clean up
+    return () => { window.matchMedia('(max-width: 1000px)').onchange = null }
   })
 
   return (
     <MaterialThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
-        <Head><title>Portfolio</title></Head>
+        <Head><title>Mizuki | Portfolio</title></Head>
         {isMediaMatched ? <SidebarMobile /> : <Sidebar />}
         <ContentsWrapper>
           {children}

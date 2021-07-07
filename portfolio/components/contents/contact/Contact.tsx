@@ -33,6 +33,7 @@ const Contact = (): JSX.Element => {
             <a
               className={classes.text}
               aria-label="See Mizuki's linkedin"
+              target='_blank'
               href='https://www.linkedin.com/in/mizukihashimoto/'
             >
               linkedin.com/in/mizukihashimoto
@@ -49,6 +50,7 @@ const Contact = (): JSX.Element => {
             <a
               className={classes.text}
               aria-label="See Mizuki's github"
+              target='_blank'
               href='https://github.com/Mozuha'
             >
               github.com/Mozuha
