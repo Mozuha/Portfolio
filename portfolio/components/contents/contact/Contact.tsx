@@ -34,6 +34,7 @@ const Contact = (): JSX.Element => {
               className={classes.text}
               aria-label="See Mizuki's linkedin"
               target='_blank'
+              rel='noopener noreferrer'
               href='https://www.linkedin.com/in/mizukihashimoto/'
             >
               linkedin.com/in/mizukihashimoto
@@ -51,6 +52,7 @@ const Contact = (): JSX.Element => {
               className={classes.text}
               aria-label="See Mizuki's github"
               target='_blank'
+              rel='noopener noreferrer'
               href='https://github.com/Mozuha'
             >
               github.com/Mozuha
