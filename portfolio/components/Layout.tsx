@@ -10,7 +10,7 @@ import SidebarMobile from './sidebar/SidebarMobile'
 type Props = { children?: ReactNode }
 
 const Layout = ({ children }: Props) => {
-  const [mediaMatched, setMediaMatched] = useState(false)
+  const [isMediaMatched, setIsMediaMatched] = useState(false)
 
   useEffect(() => {
     document.body.style.margin = '0'
@@ -18,17 +18,17 @@ const Layout = ({ children }: Props) => {
     document.body.style.backgroundColor = theme.palette.primary.main
 
     // avoid 'window is not defined' error which probably caused by SSR
-    setMediaMatched(window.matchMedia('(max-width: 1000px)').matches)  // initial check
+    setIsMediaMatched(window.matchMedia('(max-width: 1000px)').matches)  // initial check
 
     window.matchMedia('(max-width: 1000px)').onchange = (e) =>
-      setMediaMatched(e.matches)
+      setIsMediaMatched(e.matches)
   })
 
   return (
     <MaterialThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
         <Head><title>Portfolio</title></Head>
-        {!mediaMatched ? <Sidebar /> : <SidebarMobile />}
+        {isMediaMatched ? <SidebarMobile /> : <Sidebar />}
         <ContentsWrapper>
           {children}
         </ContentsWrapper>

@@ -21,7 +21,7 @@ const Contact = (): JSX.Element => {
     <ContentWrapper id='contact'>
       <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container className={classes.container} spacing={5} justify='center'>
+        <Grid container className={classes.container} spacing={2} justify='center'>
           <Grid item className={classes.item}>
             <IconButton
               className={classes.linkedinIcon}
@@ -81,9 +81,10 @@ const Contact = (): JSX.Element => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      height: '85vh',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'start',
     },
     paper: {
       maxWidth: 900,
