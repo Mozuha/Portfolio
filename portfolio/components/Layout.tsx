@@ -1,5 +1,4 @@
 import React, { ReactNode, useState, useEffect } from 'react'
-import Head from 'next/head'
 import { ThemeProvider as MaterialThemeProvider } from '@material-ui/core'
 import styled, {ThemeProvider as StyledThemeProvider} from 'styled-components'
 
@@ -32,7 +31,6 @@ const Layout = ({ children }: Props) => {
   return (
     <MaterialThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
-        <Head><title>Mizuki | Portfolio</title></Head>
         {isMediaMatched ? <SidebarMobile /> : <Sidebar />}
         <ContentsWrapper>
           {children}

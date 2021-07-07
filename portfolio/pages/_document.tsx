@@ -1,5 +1,5 @@
 import React from 'react'
-import Document, { DocumentContext } from 'next/document'
+import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import { ServerStyleSheets as MaterialServerStyleSheets } from '@material-ui/styles'
 
@@ -32,5 +32,20 @@ export default class MyDocument extends Document {
     } finally {
       styledComponentsSheet.seal()
     }
+  }
+
+  render() {
+    return (
+      <Html lang='en'>
+        <Head>
+          <title>Mizuki | Portfolio</title>
+          <meta name='description' content="Mizuki Hashimoto's portfolio" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }
