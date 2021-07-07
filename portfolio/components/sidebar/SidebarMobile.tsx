@@ -10,17 +10,17 @@ import { MenuItemInfo } from './types'
 import { menuItems } from './menuItemInfo'
 
 const SidebarMobile = (): JSX.Element => {
-  const [toggled, setToggled] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
   const [items, setItems] = useState<MenuItemInfo[]>(menuItems)
   const menuRef = useRef<HTMLDivElement>(null)
 
-  const handleMenuClick = () => !menuRef.current && setToggled(!toggled)
+  const handleMenuClick = () => !menuRef.current && setIsToggled(!isToggled)
 
   // close the menu when clicked outside of the menu
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as HTMLElement))
-        setToggled(false)
+        setIsToggled(false)
     }
 
     document.addEventListener('mousedown', handleClickOutside)
@@ -49,7 +49,7 @@ const SidebarMobile = (): JSX.Element => {
           </SidebarHeader>
         </ProSidebar>
       </SidebarHeaderWrapper>
-      <Slide direction='right' in={toggled} mountOnEnter unmountOnExit>
+      <Slide direction='right' in={isToggled} mountOnEnter unmountOnExit>
         <SidebarContentWrapper ref={menuRef}>
           <ProSidebar>
               <SidebarContent>

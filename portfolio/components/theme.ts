@@ -8,8 +8,9 @@ const theme = createMuiTheme({
     },
     text: {
       primary: '#333',
-      secondary: '#777',
+      secondary: '#666',
     },
+    divider: 'rgba(0, 0, 0, 0.48)',
   },
   typography: {
     fontFamily: [

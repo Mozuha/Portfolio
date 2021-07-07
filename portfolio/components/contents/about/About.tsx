@@ -23,8 +23,8 @@ const About = (): JSX.Element => {
             <Avatar alt='Mizuki Hashimoto' src='/img/profpic.jpg' className={classes.avatar} />
             <Divider />
             <Typography variant='h6' component='p'>
-              I am Mizuki Hashimoto, recently graduated from Juniata College
-              with a major in Computer Science and a minor in Chemistry.
+              I am Mizuki Hashimoto. I was born in Japan. I recently graduated from 
+              Juniata College with a major in Computer Science and a minor in Chemistry.
               I am currently seeking an intern or a beginner role as a software
               engineer, but am open to any opportunity because I enjoy challenging
               new things.

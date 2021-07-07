@@ -3,11 +3,11 @@ import { Slide } from '@material-ui/core'
 import styled from 'styled-components'
 
 const Top = (): JSX.Element => {
-  const [loaded, setLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    setLoaded(true)
-  })
+    setIsLoaded(true)
+  }, [])
 
   return (
     <TopWrapper id='top'>
@@ -15,7 +15,7 @@ const Top = (): JSX.Element => {
         <WelcomeMsgWrapper>
           <Slide
             direction='left'
-            in={loaded}
+            in={isLoaded}
             timeout={1000}
             mountOnEnter
             unmountOnExit
