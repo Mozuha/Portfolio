@@ -32,10 +32,7 @@ const Layout = ({ children }: Props) => {
   return (
     <MaterialThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
-        <Head>
-          <title>Mizuki | Portfolio</title>
-          <meta name='description' content="Mizuki Hashimoto's portfolio" />
-        </Head>
+        <Head><title>Mizuki | Portfolio</title></Head>
         {isMediaMatched ? <SidebarMobile /> : <Sidebar />}
         <ContentsWrapper>
           {children}
