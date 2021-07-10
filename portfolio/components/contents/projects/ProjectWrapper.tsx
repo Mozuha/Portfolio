@@ -15,19 +15,30 @@ import {
 import { MdExpandLess } from 'react-icons/md'
 import { BiLinkExternal } from 'react-icons/bi'
 import { AiOutlineGithub } from 'react-icons/ai'
+import { SiQiita } from 'react-icons/si'
 import clsx from 'clsx'
 
 import { ProjectInfo } from './types'
+import { textEn } from '../../texts/textEn'
+import { textJa } from '../../texts/textJa'
 
 type Props = {
+  id: number
   projectInfo: ProjectInfo
+  language: string
 }
 
-const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
+const ProjectWrapper = ({ id, projectInfo, language }: Props): JSX.Element => {
   const classes = useStyles()
   const [expanded, setExpanded] = useState(false)
   const handleExpandClick = () => setExpanded(!expanded)
   const handleLinkClick = (link: string | undefined) => window.open(link, '_blank')
+
+  // change only info available in other language
+  const t = language === 'ja' ? textJa : textEn
+  projectInfo.description = t.PROJECTS[id]!.DESCRIPTION
+  projectInfo.purpose = t.PROJECTS[id]!.PURPOSE
+  projectInfo.note = t.PROJECTS[id]!.NOTE
 
   return (
     <Card className={classes.card}>
@@ -55,20 +66,37 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
         </CardActions>
         <Typography className={classes.description} variant='body1' color='textSecondary' component='div'>
           {projectInfo.description}
-          {projectInfo.detail?.map((c, idx) => (
-            <Fade key={idx} in={expanded} timeout={375} mountOnEnter unmountOnExit>
+          <Fade in={expanded} timeout={375} mountOnEnter unmountOnExit>
+            <div className={classes.detail}>
               <Typography
-                className={classes.detail}
                 variant='body2'
                 color='textSecondary'
                 component='p'
               >
-                {/* seperate term and content */}
-                <b>{c.slice(0, c.indexOf(':')+1)}</b><br />
-                {c.slice(c.indexOf(':')+1)}
+                <b>Purpose:</b><br />
+                {projectInfo.purpose}
               </Typography>
-            </Fade>
-          ))}
+              <Typography
+                variant='body2'
+                color='textSecondary'
+                component='p'
+              >
+                <b>Tech Stack:</b><br />
+                {projectInfo.techStack}
+              </Typography>
+              {/* show note only if the it is existing */}
+              { projectInfo.note &&
+                <Typography
+                  variant='body2'
+                  color='textSecondary'
+                  component='p'
+                >
+                  <b>Note:</b><br />
+                  {projectInfo.note}
+                </Typography>
+              }
+            </div>
+          </Fade>
         </Typography>
         <Fade in={expanded} timeout={375} mountOnEnter unmountOnExit>
           <CardActions
@@ -76,7 +104,7 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
             disableSpacing
           >
             {/* show icon only if the link is existing */}
-            {typeof projectInfo.link === 'string' && 
+            {projectInfo.link && 
               <IconButton
                 className={classes.linkIcon}
                 onClick={() => handleLinkClick(projectInfo.link)}
@@ -85,13 +113,24 @@ const ProjectWrapper = ({ projectInfo }: Props): JSX.Element => {
                 <BiLinkExternal size={28} />
               </IconButton>
             }
-            {typeof projectInfo.github === 'string' &&
+            {projectInfo.github &&
               <IconButton
                 className={classes.githubIcon}
                 onClick={() => handleLinkClick(projectInfo.github)}
                 title='Jump to the repository'
               >
                 <AiOutlineGithub size={28} />
+              </IconButton>
+            }
+            {/* show icon only if the language is set to japanese and
+                the link is existing since it is an article in Japanese */}
+            {(language === 'ja' && projectInfo.qiita) &&
+              <IconButton
+                className={classes.qiitaIcon}
+                onClick={() => handleLinkClick(projectInfo.qiita)}
+                title='Jump to the article'
+              >
+                <SiQiita size={28} />
               </IconButton>
             }
           </CardActions>
@@ -153,7 +192,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '8px 12px 0 0',
     },
     detail: {
-      margin: '4px 0',
+      '& p': { 
+        margin: '4px 0', 
+      },
     },
     link: {
       paddingTop: 4,
@@ -170,6 +211,11 @@ const useStyles = makeStyles((theme: Theme) =>
     githubIcon: {
       '&:hover': {
         color: '#333',
+      },
+    },
+    qiitaIcon: {
+      '&:hover': {
+        color: '#55c500',
       },
     },
   })

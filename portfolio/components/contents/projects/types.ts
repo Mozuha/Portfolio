@@ -8,8 +8,11 @@
 export interface ProjectInfo {
   title: string
   image?: string
-  description?: string
-  detail?: string[]
+  description: string
+  purpose: string
+  techStack: string
+  note?: string
   link?: string
   github?: string
+  qiita?: string
 }

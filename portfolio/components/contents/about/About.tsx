@@ -11,9 +11,15 @@ import {
 } from '@material-ui/core'
 
 import ContentWrapper from '../ContentWrapper'
+import { textEn } from '../../texts/textEn'
+import { textJa } from '../../texts/textJa'
 
-const About = (): JSX.Element => {
+
+const About = ({ language }: any): JSX.Element => {
   const classes = useStyles()
+
+  // change only info available in other language
+  const t = language === 'ja' ? textJa : textEn
 
   return (
     <ContentWrapper id='about'>
@@ -22,23 +28,9 @@ const About = (): JSX.Element => {
           <Paper className={classes.paper}>
             <Avatar alt='Mizuki Hashimoto' src='/img/profpic.jpg' className={classes.avatar} />
             <Divider />
-            <Typography variant='h6' component='p'>
-              I am Mizuki Hashimoto. I was born in Japan. I recently graduated from 
-              Juniata College with a major in Computer Science and a minor in Chemistry.
-              I am currently seeking an intern or a beginner role as a software
-              engineer, but am open to any opportunity because I enjoy challenging
-              new things.
-            </Typography>
-            <Typography variant='h6' component='p'>
-              As a developer, I like to consider software as a set of components
-              and think about each component what are they, what they do, and how 
-              they interact with each other.
-            </Typography>
-            <Typography variant='h6' component='p'>
-              Besides the computer-related topics, I speak Japanese, English,
-              and some basic Mandarin. Also, I like traveling, hiking, and listening
-              to music.
-            </Typography>
+            <Typography variant='h6' component='p'>{t.ABOUT.DESCRIPTION1}</Typography>
+            <Typography variant='h6' component='p'>{t.ABOUT.DESCRIPTION2}</Typography>
+            <Typography variant='h6' component='p'>{t.ABOUT.DESCRIPTION3}</Typography>
           </Paper>
         </Grid>
       </Grid>

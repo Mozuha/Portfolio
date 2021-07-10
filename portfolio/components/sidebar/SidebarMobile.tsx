@@ -1,18 +1,41 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
-import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarContent } from 'react-pro-sidebar'
+import { useRouter } from 'next/router'
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter
+} from 'react-pro-sidebar'
 import 'react-pro-sidebar/dist/css/styles.css'
 import Link from 'react-scroll/modules/components/Link'
-import Slide from '@material-ui/core/Slide'
+import { Slide, Switch } from '@material-ui/core'
 import { MdMenu } from 'react-icons/md'
 import styled from 'styled-components'
 
 import { MenuItemInfo } from './types'
 import { menuItems } from './menuItemInfo'
 
-const SidebarMobile = (): JSX.Element => {
+type Props = {
+  handleLangChange: (language: string) => void
+}
+
+const SidebarMobile = ({ handleLangChange }: Props): JSX.Element => {
+  const { locale } = useRouter()
+  // set initial switch button position to current locale
+  const [isJA, setIsJA] = useState(locale === 'ja' ? true : false)
   const [isToggled, setIsToggled] = useState(false)
   const [items, setItems] = useState<MenuItemInfo[]>(menuItems)
   const menuRef = useRef<HTMLDivElement>(null)
+
+  const handleSwitchChange = () => setIsJA(!isJA)
+
+  // call handleLangChange only when isJA value has changed
+  useEffect(() => {
+    // lifting state up
+    isJA ? handleLangChange('ja') : handleLangChange('en')
+  }, [isJA])
 
   const handleMenuClick = () => !menuRef.current && setIsToggled(!isToggled)
 
@@ -33,7 +56,7 @@ const SidebarMobile = (): JSX.Element => {
   // determine which content is currently on screen according to the spy result
   const handleActive = useCallback((id: number, active: boolean) => {
     let newMenuItems = [...items]
-    newMenuItems[id].isActive = active ? true : false
+    newMenuItems[id]!.isActive = active ? true : false
     setItems(newMenuItems)
   }, [])
 
@@ -59,7 +82,7 @@ const SidebarMobile = (): JSX.Element => {
                       key={idx}
                       className={c.name.toLowerCase()}
                       icon={c.icon}
-                      active={items[c.id].isActive}
+                      active={items[c.id]!.isActive}
                     >
                       <Link
                         activeClass='active-a' 
@@ -77,6 +100,13 @@ const SidebarMobile = (): JSX.Element => {
                   ))}
                 </Menu>
               </SidebarContent>
+              <SidebarFooter>
+                <div>
+                  <span className='ENLabel'>EN</span>
+                  <Switch checked={isJA} onChange={handleSwitchChange} />
+                  <span className='JALabel'>JA</span>
+                </div>
+              </SidebarFooter>
           </ProSidebar>
         </SidebarContentWrapper>
      </Slide>
@@ -131,7 +161,7 @@ const SidebarContentWrapper = styled.div(props => `
   top: 0;
   margin-top: 64px;
   width: 200px;
-  height: 100%;
+  height: 94vh;
   .pro-sidebar {
     width: inherit;
     min-width: inherit;
@@ -149,11 +179,11 @@ const SidebarContentWrapper = styled.div(props => `
           &:hover, &.active {
             background-color: ${props.theme.palette.primary.dark};
             transform: scale(.95);
-            &.about { border-left: 3px solid ${menuItems[0].color}; }
-            &.experiences { border-left: 3px solid ${menuItems[1].color}; }
-            &.projects { border-left: 3px solid ${menuItems[2].color}; }
-            &.skills { border-left: 3px solid ${menuItems[3].color}; }
-            &.contact { border-left: 3px solid ${menuItems[4].color}; }
+            &.about { border-left: 3px solid ${menuItems[0]!.color}; }
+            &.experiences { border-left: 3px solid ${menuItems[1]!.color}; }
+            &.projects { border-left: 3px solid ${menuItems[2]!.color}; }
+            &.skills { border-left: 3px solid ${menuItems[3]!.color}; }
+            &.contact { border-left: 3px solid ${menuItems[4]!.color}; }
           }
           .pro-inner-item {
             margin: 10px 0px;
@@ -161,6 +191,26 @@ const SidebarContentWrapper = styled.div(props => `
             &:focus { color: none; }
             .pro-icon-wrapper { margin-right: 13px; }
           }
+        }
+      }
+    }
+    .pro-sidebar-footer {
+      background-color: ${props.theme.palette.primary.main};
+      width: inherit;
+      min-width: inherit;
+      padding: 40px;
+      text-align: center;
+      & .ENLabel, & .JALabel {
+        color: ${props.theme.palette.text.primary};
+        user-select: none;
+      }
+      .MuiSwitch-switchBase {
+        color: #346751;
+      }
+      .Mui-checked {
+        color: #346751;
+        & + .MuiSwitch-track {
+          background-color: #346751;
         }
       }
     }

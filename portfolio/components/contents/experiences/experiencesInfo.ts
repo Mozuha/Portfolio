@@ -1,6 +1,6 @@
-import { ExperiencesInfo } from './types'
+import { ExperienceInfo } from './types'
 
-export const experiencesInfos: ExperiencesInfo[] = [
+export const experiencesInfo: ExperienceInfo[] = [
   {
     title: 'Muni-Link',
     place: 'Bellwood, PA',

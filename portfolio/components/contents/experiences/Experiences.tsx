@@ -3,17 +3,17 @@ import { makeStyles, createStyles, Grid } from '@material-ui/core'
 
 import ContentWrapper from '../ContentWrapper'
 import ExperienceWrapper from './ExperienceWrapper'
-import { experiencesInfos } from './experienceInfo'
+import { experiencesInfo } from './experiencesInfo'
 
-const Experiences = (): JSX.Element => {
+const Experiences = ({ language }: any): JSX.Element => {
   const classes = useStyles()
 
   return (
     <ContentWrapper id='experiences'>
       <Grid container className={classes.root} spacing={5} justify='center'>
-        {experiencesInfos.map((c, idx) => (
+        {experiencesInfo.map((c, idx) => (
           <Grid key={idx} item className={classes.item}>
-            <ExperienceWrapper experiencesInfo={c} />
+            <ExperienceWrapper id={idx} experienceInfo={c} language={language} />
           </Grid>
         ))}
       </Grid>

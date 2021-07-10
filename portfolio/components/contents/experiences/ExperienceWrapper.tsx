@@ -9,37 +9,46 @@ import {
   Typography
 } from '@material-ui/core'
 
-import { ExperiencesInfo } from './types'
+import { ExperienceInfo } from './types'
+import { textEn } from '../../texts/textEn'
+import { textJa } from '../../texts/textJa'
 
 type Props = {
-  experiencesInfo: ExperiencesInfo
+  id: number
+  experienceInfo: ExperienceInfo
+  language: string
 }
 
-const ExperienceWrapper = ({ experiencesInfo }: Props): JSX.Element => {
+const ExperienceWrapper = ({ id, experienceInfo, language }: Props): JSX.Element => {
   const classes = useStyles()
+
+  // change only info available in other language
+  const t = language === 'ja' ? textJa : textEn
+  experienceInfo.position = t.EXPERIENCES[id]!.POSITION
+  experienceInfo.description = t.EXPERIENCES[id]!.DESCRIPTION
 
   return (
     <Card className={classes.card}>
       <CardContent className={classes.content}>
         <div className={classes.header}>
           <Typography variant='h5' component='h3'>
-            {experiencesInfo.title}
+            {experienceInfo.title}
           </Typography>
           <Typography gutterBottom variant='subtitle2' component='h5'>
-            {experiencesInfo.period} | {experiencesInfo.place}
+            {experienceInfo.period} | {experienceInfo.place}
           </Typography>
         </div>
         <Typography gutterBottom variant='subtitle1' component='h4'>
-          {experiencesInfo.position}
+          {experienceInfo.position}
         </Typography>
         <Divider />
         <Typography className={classes.description} variant='body1' color='textSecondary' component='p'>
           <b>Description:</b><br />
-          {experiencesInfo.description}
+          {experienceInfo.description}
         </Typography>
         <Typography className={classes.description} variant='body1' color='textSecondary' component='p'>
           <b>Tech Stack:</b><br />
-          {experiencesInfo.techStack}
+          {experienceInfo.techStack}
         </Typography>
       </CardContent>
     </Card>

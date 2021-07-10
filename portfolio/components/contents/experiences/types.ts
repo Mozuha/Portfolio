@@ -1,4 +1,4 @@
-export interface ExperiencesInfo {
+export interface ExperienceInfo {
   title: string
   place: string
   position: string
