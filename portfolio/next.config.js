@@ -1,15 +1,17 @@
 module.exports = {
+  reactStrictMode: true,
+
   // i18n support is not compatible with next export, so do not choose
   // 'out' file as a file to be hosted
   i18n: {
     locales: ['en', 'ja'],
     defaultLocale: 'en',
   },
+  
   async headers() {
     return [
       {
         source: '/:all*(svg|jpg|png)',
-        locale: false,
         headers: [
           {
             // in fact, Vercel will take care of this by overwrite and
