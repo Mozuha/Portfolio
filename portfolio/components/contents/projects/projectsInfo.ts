@@ -20,13 +20,13 @@ export const projectsInfo: ProjectInfo[] = [
     github: 'https://github.com/Mozuha/Connect-Four-Othello-GUI',
   },
   {
-    title: 'Oxford Flower 102 Prediction',
+    title: 'Oxford Flower 102 Classification',
     image: '/img/oxford_flower_102_prediction.png',
-    description: 'Flower image prediction app based on 102 Category Flower Dataset.',
+    description: 'Flower image classification app based on 102 Category Flower Dataset.',
     purpose: 'Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.',
     techStack: 'Python, Flask, TypeScript, React, Google Colab, Tensorflow(Keras)',
     note: 'Training was done with a fine-tuned ResNet50 model.',
-    github: 'https://github.com/Mozuha/Oxford-Flower-102-Prediction',
+    github: 'https://github.com/Mozuha/Oxford-Flower-102-Classification',
     qiita: 'https://qiita.com/Mozuha/items/3b0784a9829004035049',
   },
   {
