@@ -38,7 +38,7 @@ export const textEn: Text = {
     },
     {
       // flower
-      DESCRIPTION: 'Flower image prediction app based on 102 Category Flower Dataset.',
+      DESCRIPTION: 'Flower image classification app based on 102 Category Flower Dataset.',
       PURPOSE: 'Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.',
       NOTE: 'Training was done with a fine-tuned ResNet50 model.',
     },

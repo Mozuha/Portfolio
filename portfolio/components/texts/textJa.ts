@@ -32,7 +32,7 @@ export const textJa: Text = {
     },
     {
       // flower
-      DESCRIPTION: '102 Category Flower Datasetを元にした花画像予測アプリ',
+      DESCRIPTION: '102 Category Flower Datasetを元にした花画像分類アプリ',
       PURPOSE: 'トレンド技術の学習 (Deep learning, Tensorflow(Keras)); APIの構築とフロントエンドへの接続',
       NOTE: 'モデルの学習はファインチューニングしたResNet50で行いました',
     },
