@@ -17,6 +17,12 @@ export const textEn: Text = {
   },
   EXPERIENCES: [
     {
+      // Atrae
+      POSITION: 'Frontend Engineer Intern',
+      DESCRIPTION: 'Collaborated with product team members to work on new feature implementation,\
+      refactoring, debugging, etc. on a web application.'
+    },
+    {
       // Muni-Link
       POSITION: 'Project member',
       DESCRIPTION: 'Automated part of the company\'s invoicing process by implementing the system \
