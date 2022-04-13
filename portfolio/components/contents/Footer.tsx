@@ -6,7 +6,7 @@ const Footer = (): JSX.Element => {
   return (
     <FooterWrapper>
       <Divider variant='middle' /> 
-      <p>© 2021 Mizuki Hashimoto</p>
+      <p>© 2022 Mizuki Hashimoto</p>
     </FooterWrapper>
   )
 }
