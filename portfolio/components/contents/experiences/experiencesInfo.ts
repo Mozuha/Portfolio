@@ -5,7 +5,7 @@ export const experiencesInfo: ExperienceInfo[] = [
     title: 'Atrae, Inc.',
     place: 'Tokyo, Japan',
     position: 'Frontend Engineer Intern',
-    period: 'January 2022 - Present',
+    period: 'January 2022 - June 2022',
     techStack: 'TypeScript, React, Next.js',
     description: 'Collaborated with product team members to work on new feature implementation,\
      refactoring, debugging, etc. on a web application.',
