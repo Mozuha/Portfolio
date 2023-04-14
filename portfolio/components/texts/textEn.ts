@@ -1,17 +1,20 @@
-import { Text } from './types'
+import { Text } from './types';
 
 export const textEn: Text = {
   ABOUT: {
-    DESCRIPTION1: 'I am Mizuki Hashimoto. I was born in Japan. I recently graduated from \
+    DESCRIPTION1:
+      'I am Mizuki Hashimoto. I was born in Japan. I recently graduated from \
       Juniata College with a major in Computer Science and a minor in Chemistry. \
       I am currently studying distributed systems at TU Darmstadt. At the same time, \
       I am seeking an intern or a beginner role as a software \
       engineer, but am open to any opportunity because I enjoy challenging \
       new things.',
-    DESCRIPTION2: 'As a developer, I like to consider software as a set of components \
+    DESCRIPTION2:
+      'As a developer, I like to consider software as a set of components \
       and think about each component what are they, what they do, and how \
       they interact with each other.',
-    DESCRIPTION3: 'Besides the computer-related topics, I speak Japanese, English, \
+    DESCRIPTION3:
+      'Besides the computer-related topics, I speak Japanese, English, \
       and some basic Mandarin. Also, I like traveling, walking, and listening \
       to music.',
   },
@@ -19,15 +22,17 @@ export const textEn: Text = {
     {
       // Atrae
       POSITION: 'Frontend Engineer Intern',
-      DESCRIPTION: 'Collaborated with product team members to work on new feature implementation,\
-      refactoring, debugging, etc. on a web application.'
+      DESCRIPTION:
+        'Collaborated with product team members to work on new feature implementation,\
+      refactoring, debugging, etc. on a web application.',
     },
     {
       // Muni-Link
       POSITION: 'Project member',
-      DESCRIPTION: 'Automated part of the company\'s invoicing process by implementing the system \
-        that pulls data from the company\'s database and generates reports on a scheduled time basis. \
-        The project reduced the time consumed for the process by 12 hours per month.',
+      DESCRIPTION:
+        "Automated part of the company's invoicing process by implementing the system \
+        that pulls data from the company's database and generates reports on a scheduled time basis. \
+        The project reduced the time consumed for the process by 12 hours per month.",
     },
   ],
   PROJECTS: [
@@ -45,7 +50,8 @@ export const textEn: Text = {
     {
       // flower
       DESCRIPTION: 'Flower image classification app based on 102 Category Flower Dataset.',
-      PURPOSE: 'Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.',
+      PURPOSE:
+        'Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.',
       NOTE: 'Training was done with a fine-tuned ResNet50 model.',
     },
     {
@@ -61,4 +67,4 @@ export const textEn: Text = {
       NOTE: 'Currently considering a better language switching and internationalization.',
     },
   ],
-}
+};

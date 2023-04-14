@@ -1,6 +1,6 @@
-import { createMuiTheme } from "@material-ui/core"
+import { createTheme } from '@mui/material/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#faebd7',
@@ -13,11 +13,8 @@ const theme = createMuiTheme({
     divider: 'rgba(0, 0, 0, 0.48)',
   },
   typography: {
-    fontFamily: [
-      'Georgia',
-      'serif',
-    ].join(','),
+    fontFamily: ['Georgia', 'serif'].join(','),
   },
-})
+});
 
-export default theme
+export default theme;

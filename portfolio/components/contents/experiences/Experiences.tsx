@@ -1,37 +1,34 @@
-import React from 'react'
-import { makeStyles, createStyles, Grid } from '@material-ui/core'
+import React from 'react';
+import { styled } from '@mui/material';
+import Grid2 from '@mui/material/Unstable_Grid2';
 
-import ContentWrapper from '../ContentWrapper'
-import ExperienceWrapper from './ExperienceWrapper'
-import { experiencesInfo } from './experiencesInfo'
+import ContentWrapper from '../ContentWrapper';
+import ExperienceWrapper from './ExperienceWrapper';
+import { experiencesInfo } from './experiencesInfo';
 
 const Experiences = ({ language }: any): JSX.Element => {
-  const classes = useStyles()
-
   return (
-    <ContentWrapper id='experiences'>
-      <Grid container className={classes.root} spacing={5} justify='center'>
+    <ContentWrapper id="experiences">
+      <ContainerGrid container spacing={5}>
         {experiencesInfo.map((c, idx) => (
-          <Grid key={idx} item className={classes.item}>
+          <ItemGrid key={idx}>
             <ExperienceWrapper id={idx} experienceInfo={c} language={language} />
-          </Grid>
+          </ItemGrid>
         ))}
-      </Grid>
+      </ContainerGrid>
     </ContentWrapper>
-  )
-}
+  );
+};
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      margin: 0,
-      width: '100%',
-    },
-    item: {
-      maxWidth: 765,
-      margin: '10px',
-    },
-  })
-)
+const ContainerGrid = styled(Grid2)({
+  margin: 0,
+  width: '100%',
+  justifyContent: 'center',
+});
 
-export default Experiences
+const ItemGrid = styled(Grid2)({
+  maxWidth: 765,
+  margin: '10px',
+});
+
+export default Experiences;

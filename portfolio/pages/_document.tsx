@@ -1,37 +1,33 @@
-import React from 'react'
-import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
-import { ServerStyleSheets as MaterialServerStyleSheets } from '@material-ui/styles'
+import React from 'react';
+import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
+import createEmotionServer from '@emotion/server/create-instance';
+import createEmotionCache from '../utility/createEmotionCache';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const styledComponentsSheet = new ServerStyleSheet()
-    const materialUiSheets = new MaterialServerStyleSheets()
-    const originalRenderPage = ctx.renderPage
+    const originalRenderPage = ctx.renderPage;
+    const cache = createEmotionCache();
+    const { extractCriticalToChunks } = createEmotionServer(cache);
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            styledComponentsSheet.collectStyles(
-              materialUiSheets.collect(<App {...props} />)
-            ),
-        })
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App: any) => (props: any) => <App emotionCache={cache} {...props} />,
+      });
 
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {styledComponentsSheet.getStyleElement()}
-            {materialUiSheets.getStyleElement()}
-          </>
-        ),
-      }
-    } finally {
-      styledComponentsSheet.seal()
-    }
+    const initialProps = await Document.getInitialProps(ctx);
+    const emotionStyles = extractCriticalToChunks(initialProps.html);
+    const emotionStyleTags = emotionStyles.styles.map((style) => (
+      <style
+        data-emotion={`${style.key} ${style.ids.join(' ')}`}
+        key={style.key}
+        dangerouslySetInnerHTML={{ __html: style.css }}
+      />
+    ));
+
+    return {
+      ...initialProps,
+      emotionStyleTags,
+    };
   }
 
   render() {
@@ -45,13 +41,13 @@ export default class MyDocument extends Document {
           <link rel="mask-icon" href="img/favicon/favicon_package_beige/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
-          <meta name='description' content="Mizuki Hashimoto's portfolio" />
+          <meta name="description" content="Mizuki Hashimoto's portfolio" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

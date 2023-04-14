@@ -1,40 +1,37 @@
-import React from 'react'
-import { makeStyles, createStyles, Grid } from '@material-ui/core'
+import React from 'react';
+import { styled } from '@mui/material';
+import Grid2 from '@mui/material/Unstable_Grid2';
 
-import ContentWrapper from '../ContentWrapper'
-import ProjectWrapper from './ProjectWrapper'
-import { projectsInfo } from './projectsInfo'
+import ContentWrapper from '../ContentWrapper';
+import ProjectWrapper from './ProjectWrapper';
+import { projectsInfo } from './projectsInfo';
 
 const Projects = ({ language }: any): JSX.Element => {
-  const classes = useStyles()
-  
   return (
-    <ContentWrapper id='projects'>
-      <Grid container className={classes.root} spacing={5} justify='center'>
+    <ContentWrapper id="projects">
+      <ContainerGrid container spacing={5}>
         {projectsInfo.map((c, idx) => (
-          <Grid key={idx} item className={classes.item} xs={12} lg={4} xl={3}>
+          <ItemGrid key={idx} xs={12} lg={4} xl={3}>
             <ProjectWrapper id={idx} projectInfo={c} language={language} />
-          </Grid>
+          </ItemGrid>
         ))}
-      </Grid>
+      </ContainerGrid>
     </ContentWrapper>
-  )
-}
+  );
+};
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      margin: 0,
-      width: '100%',
-    },
-    item: {
-      width: 345,
-      height: 440,
-      maxWidth: 345,
-      maxHeight: 440,
-      margin: '10px',
-    },
-  })
-)
+const ContainerGrid = styled(Grid2)({
+  margin: 0,
+  width: '100%',
+  justifyContent: 'center',
+});
 
-export default Projects
+const ItemGrid = styled(Grid2)({
+  width: 345,
+  height: 440,
+  maxWidth: 345,
+  maxHeight: 440,
+  margin: '10px',
+});
+
+export default Projects;

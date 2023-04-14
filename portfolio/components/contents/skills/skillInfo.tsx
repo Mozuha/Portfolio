@@ -1,4 +1,4 @@
-import { SkillInfo } from './types'
+import { SkillInfo } from './types';
 
 export const skillInfos: SkillInfo[] = [
   // languages
@@ -74,4 +74,4 @@ export const skillInfos: SkillInfo[] = [
     title: 'Git',
     icon: '/img/icons/git-original.svg',
   },
-]
+];

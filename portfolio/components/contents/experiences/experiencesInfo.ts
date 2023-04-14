@@ -1,4 +1,4 @@
-import { ExperienceInfo } from './types'
+import { ExperienceInfo } from './types';
 
 export const experiencesInfo: ExperienceInfo[] = [
   {
@@ -7,7 +7,8 @@ export const experiencesInfo: ExperienceInfo[] = [
     position: 'Frontend Engineer Intern',
     period: 'January 2022 - June 2022',
     techStack: 'TypeScript, React, Next.js',
-    description: 'Collaborated with product team members to work on new feature implementation,\
+    description:
+      'Collaborated with product team members to work on new feature implementation,\
      refactoring, debugging, etc. on a web application.',
   },
   {
@@ -16,8 +17,9 @@ export const experiencesInfo: ExperienceInfo[] = [
     position: 'Project Member',
     period: 'August 2020 - November 2020',
     techStack: 'MariaDB, HeidiSQL, Jaspersoft Studio, JasperReports Server',
-    description: 'Automated the company\'s invoicing process by implementing the system\
-     to pull data from the company\'s database and create reports. \
-     The project reduced the time consumed for the process by 12 hours per month.',
+    description:
+      "Automated the company's invoicing process by implementing the system\
+     to pull data from the company's database and create reports. \
+     The project reduced the time consumed for the process by 12 hours per month.",
   },
-]
+];

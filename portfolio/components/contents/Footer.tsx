@@ -1,23 +1,23 @@
-import React from 'react'
-import { Divider } from '@material-ui/core'
-import styled from 'styled-components'
+import React from 'react';
+import { Divider } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 const Footer = (): JSX.Element => {
   return (
     <FooterWrapper>
-      <Divider variant='middle' /> 
+      <Divider variant="middle" />
       <p>© 2022 Mizuki Hashimoto</p>
     </FooterWrapper>
-  )
-}
+  );
+};
 
-const FooterWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 96px;
-  width: 100%;
-  hr { margin-top: 32px; }
-  p { margin: auto; }
-`
+const FooterWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '96px',
+  width: '100%',
+  hr: { marginTop: '32px' },
+  p: { margin: 'auto' },
+});
 
-export default Footer
+export default Footer;

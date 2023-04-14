@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react'
-import styled from 'styled-components'
+import React, { ReactNode } from 'react';
+import { styled } from '@mui/material/styles';
 
-type Props = { 
-  id: string
-  children?: ReactNode 
-}
+type Props = {
+  id: string;
+  children?: ReactNode;
+};
 
 const ContentWrapper = ({ id, children }: Props) => {
   return (
@@ -12,16 +12,16 @@ const ContentWrapper = ({ id, children }: Props) => {
       <SubtitleWrapper>{id.toUpperCase()}</SubtitleWrapper>
       {children}
     </div>
-  )
-}
+  );
+};
 
-const SubtitleWrapper = styled.h2`
-  font-weight: 200;
-  padding: 30px 25px;
-  margin: 0;
-  color: ${props => props.theme.palette.primary.main};
-  //background-color: #008073;
-  background-color: #346751;
-`
+const SubtitleWrapper = styled('h2')(({ theme }) => ({
+  fontWeight: 200,
+  padding: '30px 25px',
+  margin: 0,
+  color: theme.palette.primary.main,
+  //backgroundColor: '#008073',
+  backgroundColor: '#346751',
+}));
 
-export default ContentWrapper
+export default ContentWrapper;

@@ -1,13 +1,22 @@
-import { useEffect } from 'react'
-import { AppProps } from 'next/app'
+import { AppProps } from 'next/app';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import createEmotionCache from '../utility/createEmotionCache';
 
-const App = ({ Component, pageProps }: AppProps) => {
-  useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles)
-  }, [])
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
 
-  return <Component {...pageProps} />
+interface MyAppProps extends AppProps {
+  Component: AppProps['Component'];
+  emotionCache?: EmotionCache;
+  pageProps: AppProps['pageProps'];
 }
 
-export default App
+const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) => {
+  return (
+    <CacheProvider value={emotionCache}>
+      <Component {...pageProps} />
+    </CacheProvider>
+  );
+};
+
+export default App;

@@ -1,4 +1,4 @@
 export interface SkillInfo {
-  title: string
-  icon?: string
+  title: string;
+  icon?: string;
 }

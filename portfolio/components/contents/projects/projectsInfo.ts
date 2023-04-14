@@ -1,4 +1,4 @@
-import { ProjectInfo } from './types'
+import { ProjectInfo } from './types';
 
 export const projectsInfo: ProjectInfo[] = [
   {
@@ -23,7 +23,8 @@ export const projectsInfo: ProjectInfo[] = [
     title: 'Oxford Flower 102 Classification',
     image: '/img/oxford_flower_102_prediction.png',
     description: 'Flower image classification app based on 102 Category Flower Dataset.',
-    purpose: 'Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.',
+    purpose:
+      'Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.',
     techStack: 'Python, Flask, TypeScript, React, Google Colab, Tensorflow(Keras)',
     note: 'Training was done with a fine-tuned ResNet50 model.',
     github: 'https://github.com/Mozuha/Oxford-Flower-102-Classification',
@@ -48,4 +49,4 @@ export const projectsInfo: ProjectInfo[] = [
     link: 'https://portfolio-mozuha.vercel.app/',
     github: 'https://github.com/Mozuha/Portfolio',
   },
-]
+];

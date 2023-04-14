@@ -1,82 +1,69 @@
-import React from 'react'
-import { 
-  makeStyles,
-  createStyles,
-  Theme,
-  Card,
-  CardContent,
-  Divider,
-  Typography
-} from '@material-ui/core'
+import React from 'react';
+import { styled, Card, CardContent, Divider, Typography } from '@mui/material';
 
-import { ExperienceInfo } from './types'
-import { textEn } from '../../texts/textEn'
-import { textJa } from '../../texts/textJa'
+import { ExperienceInfo } from './types';
+import { textEn } from '../../texts/textEn';
+import { textJa } from '../../texts/textJa';
 
 type Props = {
-  id: number
-  experienceInfo: ExperienceInfo
-  language: string
-}
+  id: number;
+  experienceInfo: ExperienceInfo;
+  language: string;
+};
 
 const ExperienceWrapper = ({ id, experienceInfo, language }: Props): JSX.Element => {
-  const classes = useStyles()
-
   // change only info available in other language
-  const t = language === 'ja' ? textJa : textEn
-  experienceInfo.position = t.EXPERIENCES[id]!.POSITION
-  experienceInfo.description = t.EXPERIENCES[id]!.DESCRIPTION
+  const t = language === 'ja' ? textJa : textEn;
+  experienceInfo.position = t.EXPERIENCES[id]!.POSITION;
+  experienceInfo.description = t.EXPERIENCES[id]!.DESCRIPTION;
 
   return (
-    <Card className={classes.card}>
-      <CardContent className={classes.content}>
-        <div className={classes.header}>
-          <Typography variant='h5' component='h3'>
+    <ExperienceCard>
+      <ExperienceCardContent>
+        <ExperienceInfoHeader>
+          <Typography variant="h5" component="h3">
             {experienceInfo.title}
           </Typography>
-          <Typography gutterBottom variant='subtitle2' component='h5'>
+          <Typography gutterBottom variant="subtitle2" component="h5">
             {experienceInfo.period} | {experienceInfo.place}
           </Typography>
-        </div>
-        <Typography gutterBottom variant='subtitle1' component='h4'>
+        </ExperienceInfoHeader>
+        <Typography gutterBottom variant="subtitle1" component="h4">
           {experienceInfo.position}
         </Typography>
         <Divider />
-        <Typography className={classes.description} variant='body1' color='textSecondary' component='p'>
-          <b>Description:</b><br />
+        <Typography variant="body1" color="textSecondary" component="p" padding="8px 0 0 0">
+          <b>Description:</b>
+          <br />
           {experienceInfo.description}
         </Typography>
-        <Typography className={classes.description} variant='body1' color='textSecondary' component='p'>
-          <b>Tech Stack:</b><br />
+        <Typography variant="body1" color="textSecondary" component="p" padding="8px 0 0 0">
+          <b>Tech Stack:</b>
+          <br />
           {experienceInfo.techStack}
         </Typography>
-      </CardContent>
-    </Card>
-  )
-}
+      </ExperienceCardContent>
+    </ExperienceCard>
+  );
+};
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    card: {
-      backgroundColor: theme.palette.primary.dark,
-      boxShadow: theme.shadows[5],
-    },
-    content: {
-      padding: 12,
-      '&:last-child': {
-        paddingBottom: 8,
-      },
-    },
-    header: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginTop: 8,
-      lineHeight: 1,
-    },
-    description: {
-      padding: '8px 0 0 0',
-    },
-  })
-)
+const ExperienceCard = styled(Card)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.dark,
+  boxShadow: theme.shadows[5],
+}));
 
-export default ExperienceWrapper
+const ExperienceCardContent = styled(CardContent)({
+  padding: 12,
+  '&:last-child': {
+    paddingBottom: 8,
+  },
+});
+
+const ExperienceInfoHeader = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginTop: 8,
+  lineHeight: 1,
+});
+
+export default ExperienceWrapper;
