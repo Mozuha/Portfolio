@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Slide } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -7,10 +8,12 @@ const Top = (): JSX.Element => {
 
   useEffect(() => {
     setIsLoaded(true);
+    console.log('loaded');
   }, []);
 
   return (
     <TopWrapper id="top">
+      <Image alt="top-image" src="/img/arches_high.jpg" fill style={{ objectFit: 'cover', objectPosition: 'left' }} />
       <Overlay>
         <WelcomeMsgWrapper>
           <Slide direction="left" in={isLoaded} timeout={1000} mountOnEnter unmountOnExit>
@@ -32,7 +35,7 @@ const TopWrapper = styled('div')({
   padding: 0,
   margin: 0,
   top: 0,
-  background: 'url(/img/arches_high.jpg) no-repeat left/cover',
+  position: 'relative',
 });
 
 const Overlay = styled('div')({
@@ -41,6 +44,7 @@ const Overlay = styled('div')({
   padding: 0,
   margin: 0,
   top: 0,
+  position: 'absolute',
   backgroundColor: 'rgba(0, 0, 0, 0.2)',
 });
 
