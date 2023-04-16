@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { styled, Paper, Typography, Avatar, Divider } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
@@ -15,7 +16,9 @@ const About = ({ language }: any): JSX.Element => {
       <ContainerGrid container spacing={5}>
         <ItemGrid>
           <ProfilePaper>
-            <MyAvatar alt="Mizuki Hashimoto" src="/img/profpic.jpg" />
+            <MyAvatar>
+              <Image alt="Mizuki Hashimoto" src="/img/profpic.jpg" sizes="25vw" fill style={{ objectFit: 'cover' }} />
+            </MyAvatar>
             <Divider />
             <Typography variant="h6" component="p">
               {t.ABOUT.DESCRIPTION1}

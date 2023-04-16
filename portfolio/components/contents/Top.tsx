@@ -8,12 +8,18 @@ const Top = (): JSX.Element => {
 
   useEffect(() => {
     setIsLoaded(true);
-    console.log('loaded');
   }, []);
 
   return (
     <TopWrapper id="top">
-      <Image alt="top-image" src="/img/arches_high.jpg" fill style={{ objectFit: 'cover', objectPosition: 'left' }} />
+      <Image
+        alt="top-image"
+        src="/img/arches_high.jpg"
+        sizes="90vw"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'left' }}
+        // priority
+      />
       <Overlay>
         <WelcomeMsgWrapper>
           <Slide direction="left" in={isLoaded} timeout={1000} mountOnEnter unmountOnExit>

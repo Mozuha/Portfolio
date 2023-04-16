@@ -7,7 +7,7 @@
 
 export interface ProjectInfo {
   title: string;
-  image?: string;
+  image: string;
   description: string;
   purpose: string;
   techStack: string;

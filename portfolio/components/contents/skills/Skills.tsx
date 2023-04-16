@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { styled, Paper } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
@@ -12,7 +13,7 @@ const Skills = (): JSX.Element => {
         {skillInfos.map((c, idx) => (
           <ItemGrid key={idx}>
             <SkillsPaper>
-              <img src={c.icon} alt={c.title + '-logo'} width="42" height="42" />
+              <Image alt={c.title + '-logo'} src={c.icon} width="42" height="42" />
               <p>{c.title}</p>
             </SkillsPaper>
           </ItemGrid>

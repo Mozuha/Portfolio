@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   styled,
   Card,
@@ -40,7 +41,15 @@ const ProjectWrapper = ({ id, projectInfo, language }: Props): JSX.Element => {
   return (
     <ProjectCard>
       <Collapse in={!expanded} mountOnEnter unmountOnExit>
-        <ProjectCardMedia image={projectInfo.image} />
+        <ProjectCardMedia>
+          <Image
+            alt={projectInfo.title + ' image'}
+            src={projectInfo.image}
+            sizes="33vw"
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        </ProjectCardMedia>
       </Collapse>
       <ProjectCardContent>
         <TitleTypography gutterBottom variant="h5" component="h3">
@@ -118,8 +127,10 @@ const ProjectCard = styled(Card)(({ theme }) => ({
 }));
 
 const ProjectCardMedia = styled(CardMedia)({
-  height: 0,
   paddingTop: '70%',
+  position: 'relative',
+  width: '100%',
+  height: '100%',
 });
 
 const ProjectCardContent = styled(CardContent)({
