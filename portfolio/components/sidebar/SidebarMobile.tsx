@@ -49,7 +49,7 @@ const SidebarMobile = (): JSX.Element => {
         <ProSidebar>
           <SidebarHeader>
             <MdMenu color={'#333'} size={42} onClick={handleMenuClick} />
-            <Link to="top" smooth={true} offset={-64}>
+            <Link to="top" href="top" smooth={true} offset={-64} style={{ textDecoration: 'none' }}>
               <span className="logo">Mizuki Hashimoto</span>
             </Link>
           </SidebarHeader>
@@ -65,6 +65,7 @@ const SidebarMobile = (): JSX.Element => {
                     <Link
                       activeClass="active-a"
                       to={c.name.toLowerCase()}
+                      href={c.name.toLowerCase()}
                       spy={true}
                       smooth={true}
                       offset={-64}
