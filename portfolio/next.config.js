@@ -1,13 +1,12 @@
+const { i18n } = require('./next-i18next.config');
+
 module.exports = {
   reactStrictMode: true,
 
   // i18n support is not compatible with next export, so do not choose
   // 'out' file as a file to be hosted
-  i18n: {
-    locales: ['en', 'ja'],
-    defaultLocale: 'en',
-  },
-  
+  i18n,
+
   async headers() {
     return [
       {
@@ -18,9 +17,11 @@ module.exports = {
             // set it to the most effective value
             key: 'Cache-Control',
             value: 'public, max-age=9999999999, must-revalidate',
-          }
+          },
         ],
       },
-    ]
+    ];
   },
-}
+
+  // output: 'export',
+};

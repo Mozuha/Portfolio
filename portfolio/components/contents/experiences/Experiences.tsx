@@ -6,13 +6,13 @@ import ContentWrapper from '../ContentWrapper';
 import ExperienceWrapper from './ExperienceWrapper';
 import { experiencesInfo } from './experiencesInfo';
 
-const Experiences = ({ language }: any): JSX.Element => {
+const Experiences = () => {
   return (
     <ContentWrapper id="experiences">
       <ContainerGrid container spacing={5}>
         {experiencesInfo.map((c, idx) => (
           <ItemGrid key={idx}>
-            <ExperienceWrapper id={idx} experienceInfo={c} language={language} />
+            <ExperienceWrapper experienceInfo={c} />
           </ItemGrid>
         ))}
       </ContainerGrid>

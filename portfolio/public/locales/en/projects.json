@@ -1,0 +1,26 @@
+{
+  "Todo App": {
+    "description": "Simple Todo App that provides the user an option to add content in the code style.",
+    "purpose": "Learn trending technologies (TypeScript, React, and Firebase)."
+  },
+  "Connect Four Othello": {
+    "description": "Windows Forms game app which combined Connect Four and Othello.",
+    "purpose": "Learn GUI and software designing techniques (MVC, UML).",
+    "note": "This was done as a part of an undergraduate course assignment."
+  },
+  "Oxford Flower 102 Classification": {
+    "description": "Flower image classification app based on 102 Category Flower Dataset.",
+    "purpose": "Learn trending technologies (Deep learning, Tensorflow(Keras)); Construct API and connect it with the frontend.",
+    "note": "Training was done with a fine-tuned ResNet50 model."
+  },
+  "Spooky Trail": {
+    "description": "A spooky scene of objects rendered with OpenGL.",
+    "purpose": "Learn basics of computer graphics.",
+    "note": "This was done as a part of an undergraduate course assignment."
+  },
+  "Portfolio": {
+    "description": "My Portfolio",
+    "purpose": "Learn React framework.",
+    "note": "Currently considering a better language switching and internationalization."
+  }
+}

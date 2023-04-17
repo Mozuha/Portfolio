@@ -6,13 +6,13 @@ import ContentWrapper from '../ContentWrapper';
 import ProjectWrapper from './ProjectWrapper';
 import { projectsInfo } from './projectsInfo';
 
-const Projects = ({ language }: any): JSX.Element => {
+const Projects = () => {
   return (
     <ContentWrapper id="projects">
       <ContainerGrid container spacing={5}>
         {projectsInfo.map((c, idx) => (
           <ItemGrid key={idx} xs={12} lg={4} xl={3}>
-            <ProjectWrapper id={idx} projectInfo={c} language={language} />
+            <ProjectWrapper projectInfo={c} />
           </ItemGrid>
         ))}
       </ContainerGrid>

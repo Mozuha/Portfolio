@@ -18,7 +18,7 @@ const Top = (): JSX.Element => {
         sizes="90vw"
         fill
         style={{ objectFit: 'cover', objectPosition: 'left' }}
-        // priority
+        priority
       />
       <Overlay>
         <WelcomeMsgWrapper>

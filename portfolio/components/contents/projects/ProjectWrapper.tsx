@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import {
   styled,
   Card,
@@ -16,27 +17,20 @@ import { BiLinkExternal } from 'react-icons/bi';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { SiQiita } from 'react-icons/si';
 import clsx from 'clsx';
+import { useTranslation } from 'next-i18next';
 
 import { ProjectInfo } from './types';
-import { textEn } from '../../texts/textEn';
-import { textJa } from '../../texts/textJa';
 
 type Props = {
-  id: number;
   projectInfo: ProjectInfo;
-  language: string;
 };
 
-const ProjectWrapper = ({ id, projectInfo, language }: Props): JSX.Element => {
+const ProjectWrapper = ({ projectInfo }: Props) => {
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => setExpanded(!expanded);
   const handleLinkClick = (link: string | undefined) => window.open(link, '_blank');
-
-  // change only info available in other language
-  const t = language === 'ja' ? textJa : textEn;
-  projectInfo.description = t.PROJECTS[id]!.DESCRIPTION;
-  projectInfo.purpose = t.PROJECTS[id]!.PURPOSE;
-  projectInfo.note = t.PROJECTS[id]!.NOTE;
+  const { locale } = useRouter();
+  const { t } = useTranslation('projects');
 
   return (
     <ProjectCard>
@@ -68,13 +62,13 @@ const ProjectWrapper = ({ id, projectInfo, language }: Props): JSX.Element => {
           </ExpandIconButton>
         </ProjectCardActions>
         <DescriptionTypography variant="body1" color="textSecondary" component="div">
-          {projectInfo.description}
+          {t(`${projectInfo.title}.description`)}
           <Fade in={expanded} timeout={375} mountOnEnter unmountOnExit>
             <DetailDiv>
               <Typography variant="body2" color="textSecondary" component="p">
                 <b>Purpose:</b>
                 <br />
-                {projectInfo.purpose}
+                {t(`${projectInfo.title}.purpose`)}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 <b>Tech Stack:</b>
@@ -86,7 +80,7 @@ const ProjectWrapper = ({ id, projectInfo, language }: Props): JSX.Element => {
                 <Typography variant="body2" color="textSecondary" component="p">
                   <b>Note:</b>
                   <br />
-                  {projectInfo.note}
+                  {t(`${projectInfo.title}.note`)}
                 </Typography>
               )}
             </DetailDiv>
@@ -107,7 +101,7 @@ const ProjectWrapper = ({ id, projectInfo, language }: Props): JSX.Element => {
             )}
             {/* show icon only if the language is set to japanese and
                 the link is existing since it is an article in Japanese */}
-            {language === 'ja' && projectInfo.qiita && (
+            {locale === 'ja' && projectInfo.qiita && (
               <QiitaIconButton onClick={() => handleLinkClick(projectInfo.qiita)} title="Jump to the article">
                 <SiQiita size={28} />
               </QiitaIconButton>

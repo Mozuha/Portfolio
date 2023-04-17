@@ -9,25 +9,17 @@ import { MdMenu } from 'react-icons/md';
 import { MenuItemInfo } from './types';
 import { menuItems } from './menuItemInfo';
 
-type Props = {
-  handleLangChange: (language: string) => void;
-};
-
-const SidebarMobile = ({ handleLangChange }: Props): JSX.Element => {
-  const { locale } = useRouter();
-  // set initial switch button position to current locale
-  const [isJA, setIsJA] = useState(locale === 'ja' ? true : false);
+const SidebarMobile = (): JSX.Element => {
+  const router = useRouter();
+  const changeTo = router.locale === 'en' ? 'ja' : 'en';
   const [isToggled, setIsToggled] = useState(false);
   const [items, setItems] = useState<MenuItemInfo[]>(menuItems);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const handleSwitchChange = () => setIsJA(!isJA);
-
-  // call handleLangChange only when isJA value has changed
-  useEffect(() => {
-    // lifting state up
-    isJA ? handleLangChange('ja') : handleLangChange('en');
-  }, [isJA]);
+  const handleLangChange = (newLocale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: newLocale });
+  };
 
   const handleMenuClick = () => !menuRef.current && setIsToggled(!isToggled);
 
@@ -89,7 +81,11 @@ const SidebarMobile = ({ handleLangChange }: Props): JSX.Element => {
             <SidebarFooter>
               <div>
                 <span className="ENLabel">EN</span>
-                <Switch checked={isJA} onChange={handleSwitchChange} />
+                <Switch
+                  inputProps={{ 'aria-label': 'language-switch' }}
+                  checked={router.locale === 'ja'}
+                  onChange={() => handleLangChange(changeTo)}
+                />
                 <span className="JALabel">JA</span>
               </div>
             </SidebarFooter>

@@ -1,0 +1,26 @@
+{
+  "Todo App": {
+    "description": "テキストをコードスタイルで登録できるシンプルなTodoアプリ",
+    "purpose": "トレンド技術の学習 (TypeScript, React, and Firebase)"
+  },
+  "Connect Four Othello": {
+    "description": "コネクトフォーとオセロを組み合わせたWindowsフォームゲームアプリ",
+    "purpose": "GUIとソフトウェアデザイン手法(MVC, UML)の学習",
+    "note": "大学の授業課題の一環として作りました"
+  },
+  "Oxford Flower 102 Classification": {
+    "description": "102 Category Flower Datasetを元にした花画像分類アプリ",
+    "purpose": "トレンド技術の学習 (Deep learning, Tensorflow(Keras)); APIの構築とフロントエンドへの接続",
+    "note": "モデルの学習はファインチューニングしたResNet50で行いました"
+  },
+  "Spooky Trail": {
+    "description": "OpenGLによるシーンレンダリング",
+    "purpose": "CGの基礎の学習",
+    "note": "大学の授業課題の一環として作りました"
+  },
+  "Portfolio": {
+    "description": "このポートフォリオ",
+    "purpose": "Reactフレームワークの学習",
+    "note": "現在、より良い言語スイッチングと国際化(i18n)を検討しています"
+  }
+}

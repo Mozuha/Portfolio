@@ -1,21 +1,15 @@
 import React from 'react';
 import { styled, Card, CardContent, Divider, Typography } from '@mui/material';
+import { useTranslation } from 'next-i18next';
 
 import { ExperienceInfo } from './types';
-import { textEn } from '../../texts/textEn';
-import { textJa } from '../../texts/textJa';
 
 type Props = {
-  id: number;
   experienceInfo: ExperienceInfo;
-  language: string;
 };
 
-const ExperienceWrapper = ({ id, experienceInfo, language }: Props): JSX.Element => {
-  // change only info available in other language
-  const t = language === 'ja' ? textJa : textEn;
-  experienceInfo.position = t.EXPERIENCES[id]!.POSITION;
-  experienceInfo.description = t.EXPERIENCES[id]!.DESCRIPTION;
+const ExperienceWrapper = ({ experienceInfo }: Props): JSX.Element => {
+  const { t } = useTranslation('experiences');
 
   return (
     <ExperienceCard>
@@ -24,24 +18,28 @@ const ExperienceWrapper = ({ id, experienceInfo, language }: Props): JSX.Element
           <Typography variant="h5" component="h3">
             {experienceInfo.title}
           </Typography>
-          <Typography gutterBottom variant="subtitle2" component="h5">
+          <Typography gutterBottom variant="subtitle2" component="h4">
             {experienceInfo.period} | {experienceInfo.place}
           </Typography>
         </ExperienceInfoHeader>
         <Typography gutterBottom variant="subtitle1" component="h4">
-          {experienceInfo.position}
+          {t(`${experienceInfo.title}.position`)}
         </Typography>
         <Divider />
-        <Typography variant="body1" color="textSecondary" component="p" padding="8px 0 0 0">
-          <b>Description:</b>
-          <br />
-          {experienceInfo.description}
-        </Typography>
-        <Typography variant="body1" color="textSecondary" component="p" padding="8px 0 0 0">
-          <b>Tech Stack:</b>
-          <br />
-          {experienceInfo.techStack}
-        </Typography>
+        {experienceInfo.description && (
+          <Typography variant="body1" color="textSecondary" component="p" padding="8px 0 0 0">
+            <b>Description:</b>
+            <br />
+            {t(`${experienceInfo.title}.description`)}
+          </Typography>
+        )}
+        {experienceInfo.techStack && (
+          <Typography variant="body1" color="textSecondary" component="p" padding="8px 0 0 0">
+            <b>Tech Stack:</b>
+            <br />
+            {experienceInfo.techStack}
+          </Typography>
+        )}
       </ExperienceCardContent>
     </ExperienceCard>
   );

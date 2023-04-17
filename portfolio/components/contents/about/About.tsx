@@ -2,14 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import { styled, Paper, Typography, Avatar, Divider } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
+import { useTranslation } from 'next-i18next';
 
 import ContentWrapper from '../ContentWrapper';
-import { textEn } from '../../texts/textEn';
-import { textJa } from '../../texts/textJa';
 
-const About = ({ language }: any): JSX.Element => {
-  // change only info available in other language
-  const t = language === 'ja' ? textJa : textEn;
+const About = () => {
+  const { t } = useTranslation('about');
 
   return (
     <ContentWrapper id="about">
@@ -21,13 +19,13 @@ const About = ({ language }: any): JSX.Element => {
             </MyAvatar>
             <Divider />
             <Typography variant="h6" component="p">
-              {t.ABOUT.DESCRIPTION1}
+              {t('description1')}
             </Typography>
             <Typography variant="h6" component="p">
-              {t.ABOUT.DESCRIPTION2}
+              {t('description2')}
             </Typography>
             <Typography variant="h6" component="p">
-              {t.ABOUT.DESCRIPTION3}
+              {t('description3')}
             </Typography>
           </ProfilePaper>
         </ItemGrid>

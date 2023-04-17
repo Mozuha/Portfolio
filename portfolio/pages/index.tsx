@@ -1,4 +1,7 @@
-import Layout from '../components/Layout';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import Top from '../components/contents/Top';
 import About from '../components/contents/about/About';
 import Experiences from '../components/contents/experiences/Experiences';
@@ -7,9 +10,14 @@ import Skills from '../components/contents/skills/Skills';
 import Contact from '../components/contents/contact/Contact';
 import Footer from '../components/contents/Footer';
 
-const IndexPage = (): JSX.Element => {
+type Props = {};
+
+const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Layout>
+    <>
+      <Head>
+        <title>Mizuki | Portfolio</title>
+      </Head>
       <Top />
       <About />
       <Experiences />
@@ -17,8 +25,14 @@ const IndexPage = (): JSX.Element => {
       <Skills />
       <Contact />
       <Footer />
-    </Layout>
+    </>
   );
 };
+
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'en', ['about', 'experiences', 'projects'])),
+  },
+});
 
 export default IndexPage;

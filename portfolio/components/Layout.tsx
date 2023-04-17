@@ -1,8 +1,6 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { styled, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { styled } from '@mui/material/styles';
 
 import theme from './theme';
 import Sidebar from './sidebar/Sidebar';
@@ -13,23 +11,7 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  const { locale } = useRouter();
-  // set initial language to current locale
-  // user can change language through switch on sidebar thereafter
-  const [lang, setLang] = useState(locale);
   const [isMediaMatched, setIsMediaMatched] = useState(false);
-
-  const handleLangChange = (language: string) => setLang(language);
-
-  // cloning children with new props to pass language
-  const Parent = ({ children }: Props) => {
-    const additionalProps = { language: lang };
-    const childrenWithProps = React.Children.map(children, (child) => {
-      if (React.isValidElement(child)) return React.cloneElement(child, additionalProps);
-      return child;
-    });
-    return <div>{childrenWithProps}</div>;
-  };
 
   useEffect(() => {
     document.body.style.margin = '0';
@@ -50,20 +32,31 @@ const Layout = ({ children }: Props) => {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <>
       <Head>
-        <title>Mizuki | Portfolio</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/favicon_package_beige/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon_package_beige/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon_package_beige/favicon-16x16.png" />
+        <link rel="manifest" href="img/favicon/favicon_package_beige/site.webmanifest" />
+        <link rel="mask-icon" href="img/favicon/favicon_package_beige/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#346751" />
+        {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> */}
+        <meta property="og:title" content="Mizuki | Portfolio" />
+        <meta name="description" content="Mizuki Hashimoto's portfolio" />
+        <meta name="description" content="Mizuki Hashimoto's portfolio" />
+        <meta property="og:image" content="/img/portfolio.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://portfolio-mozuha.vercel.app/" />
+        <meta property="og:site_name" content="Mizuki | Portfolio" />
       </Head>
-      {isMediaMatched ? (
-        <SidebarMobile handleLangChange={handleLangChange} />
-      ) : (
-        <Sidebar handleLangChange={handleLangChange} />
-      )}
+      {isMediaMatched ? <SidebarMobile /> : <Sidebar />}
       <ContentsWrapper>
-        <Parent>{children}</Parent>
+        {/* <Parent>{children}</Parent> */}
+        {children}
       </ContentsWrapper>
-    </ThemeProvider>
+    </>
   );
 };
 

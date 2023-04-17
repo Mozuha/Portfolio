@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -9,23 +9,15 @@ import { styled } from '@mui/material/styles';
 import { MenuItemInfo } from './types';
 import { menuItems } from './menuItemInfo';
 
-type Props = {
-  handleLangChange: (language: string) => void;
-};
-
-const Sidebar = ({ handleLangChange }: Props): JSX.Element => {
-  const { locale } = useRouter();
-  // set initial switch button position to current locale
-  const [isJA, setIsJA] = useState(locale === 'ja' ? true : false);
+const Sidebar = () => {
+  const router = useRouter();
+  const changeTo = router.locale === 'en' ? 'ja' : 'en';
   const [items, setItems] = useState<MenuItemInfo[]>(menuItems);
 
-  const handleSwitchChange = () => setIsJA(!isJA);
-
-  // call handleLangChange only when isJA value has changed
-  useEffect(() => {
-    // lifting state up
-    isJA ? handleLangChange('ja') : handleLangChange('en');
-  }, [isJA]);
+  const handleLangChange = (newLocale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale: newLocale });
+  };
 
   // determine which content is currently on screen according to the spy result
   const handleActive = useCallback((id: number, active: boolean) => {
@@ -48,7 +40,7 @@ const Sidebar = ({ handleLangChange }: Props): JSX.Element => {
     <SidebarWrapper>
       <ProSidebar>
         <SidebarHeader>
-          <Link to="top" smooth={true}>
+          <Link to="top" href="top" smooth={true} style={{ textDecoration: 'none' }}>
             <span className="logo">Mizuki Hashimoto</span>
           </Link>
         </SidebarHeader>
@@ -59,6 +51,7 @@ const Sidebar = ({ handleLangChange }: Props): JSX.Element => {
                 <Link
                   activeClass="active-a"
                   to={c.name.toLowerCase()}
+                  href={c.name.toLowerCase()}
                   spy={true}
                   smooth={true}
                   duration={600}
@@ -74,7 +67,11 @@ const Sidebar = ({ handleLangChange }: Props): JSX.Element => {
         <SidebarFooter>
           <div>
             <span className="ENLabel">EN</span>
-            <Switch checked={isJA} onChange={handleSwitchChange} />
+            <Switch
+              inputProps={{ 'aria-label': 'language-switch' }}
+              checked={router.locale === 'ja'}
+              onChange={() => handleLangChange(changeTo)}
+            />
             <span className="JALabel">JA</span>
           </div>
         </SidebarFooter>

@@ -26,7 +26,8 @@ export default class MyDocument extends Document {
 
     return {
       ...initialProps,
-      emotionStyleTags,
+      // Styles fragment is rendered after the app and page rendering finish.
+      styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
     };
   }
 
@@ -40,8 +41,16 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="img/favicon/favicon_package_beige/site.webmanifest" />
           <link rel="mask-icon" href="img/favicon/favicon_package_beige/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="#346751" />
+          {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> */}
+          <meta property="og:title" content="Mizuki | Portfolio" />
           <meta name="description" content="Mizuki Hashimoto's portfolio" />
+          <meta name="description" content="Mizuki Hashimoto's portfolio" />
+          <meta property="og:image" content="/img/portfolio.png" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://portfolio-mozuha.vercel.app/" />
+          <meta property="og:site_name" content="Mizuki | Portfolio" />
         </Head>
         <body>
           <Main />
