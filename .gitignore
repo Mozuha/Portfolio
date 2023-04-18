@@ -10,6 +10,12 @@ node_modules/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+/portfolio/.yarn/*
+!/portfolio/.yarn/patches
+!/portfolio/.yarn/plugins
+!/portfolio/.yarn/releases
+!/portfolio/.yarn/sdks
+!/portfolio/.yarn/versions
 
 # testing
 /coverage
