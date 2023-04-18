@@ -74,4 +74,8 @@ export const skillInfos: SkillInfo[] = [
     title: 'Git',
     icon: '/img/icons/git-original.svg',
   },
+  {
+    title: 'Docker',
+    icon: '/img/icons/docker-original.svg',
+  },
 ];
