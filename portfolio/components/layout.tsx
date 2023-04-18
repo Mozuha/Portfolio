@@ -1,14 +1,17 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { styled } from '@mui/material/styles';
 
 import theme from './theme';
-import Sidebar from './sidebar/Sidebar';
-import SidebarMobile from './sidebar/SidebarMobile';
 
 type Props = {
   children?: ReactNode;
 };
+
+// this reduced bundle size (first load js) from 154kB to 124kB (reduced by 19.5%)
+const Sidebar = dynamic(() => import('./sidebar/Sidebar'), { loading: () => <p>Loading...</p> });
+const SidebarMobile = dynamic(() => import('./sidebar/SidebarMobile'), { loading: () => <p>Loading...</p> });
 
 const Layout = ({ children }: Props) => {
   const [isMediaMatched, setIsMediaMatched] = useState(false);
@@ -52,10 +55,7 @@ const Layout = ({ children }: Props) => {
         <meta property="og:site_name" content="Mizuki | Portfolio" />
       </Head>
       {isMediaMatched ? <SidebarMobile /> : <Sidebar />}
-      <ContentsWrapper>
-        {/* <Parent>{children}</Parent> */}
-        {children}
-      </ContentsWrapper>
+      <ContentsWrapper>{children}</ContentsWrapper>
     </>
   );
 };
