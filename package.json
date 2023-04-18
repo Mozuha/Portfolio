@@ -2,5 +2,13 @@
   "dependencies": {
     "create-next-app": "^10.2.0"
   },
+  "devDependencies": {
+    "husky": "^8.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "packageManager": "yarn@3.5.0"
 }
