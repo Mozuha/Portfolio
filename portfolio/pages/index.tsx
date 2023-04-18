@@ -1,16 +1,16 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
+
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import Top from '../components/contents/Top';
 import About from '../components/contents/about/About';
+import Contact from '../components/contents/contact/Contact';
 import Experiences from '../components/contents/experiences/Experiences';
+import Footer from '../components/contents/Footer';
 import Projects from '../components/contents/projects/Projects';
 import Skills from '../components/contents/skills/Skills';
-import Contact from '../components/contents/contact/Contact';
-import Footer from '../components/contents/Footer';
+import Top from '../components/contents/Top';
 
-type Props = {};
+import type { InferGetStaticPropsType } from 'next';
 
 const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -29,7 +29,7 @@ const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'en', ['about', 'experiences', 'projects'])),
   },

@@ -1,13 +1,17 @@
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
+
+import { CacheProvider } from '@emotion/react';
 import { appWithTranslation } from 'next-i18next';
 
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+
+import Layout from '../components/layout';
 import theme from '../components/theme';
 import createEmotionCache from '../utility/createEmotionCache';
-import Layout from '../components/layout';
+
+import type { EmotionCache } from '@emotion/react';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

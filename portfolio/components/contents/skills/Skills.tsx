@@ -1,10 +1,12 @@
 import React from 'react';
+
 import Image from 'next/image';
-import { styled, Paper } from '@mui/material';
+
+import { Paper, styled } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
-import ContentWrapper from '../ContentWrapper';
 import { skillInfos } from './skillInfo';
+import ContentWrapper from '../ContentWrapper';
 
 const Skills = (): JSX.Element => {
   return (

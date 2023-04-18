@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { styled } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
-import ContentWrapper from '../ContentWrapper';
-import ProjectWrapper from './ProjectWrapper';
 import { projectsInfo } from './projectsInfo';
+import ProjectWrapper from './ProjectWrapper';
+import ContentWrapper from '../ContentWrapper';
 
 const Projects = () => {
   return (

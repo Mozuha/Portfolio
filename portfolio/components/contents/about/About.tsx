@@ -1,8 +1,11 @@
 import React from 'react';
+
 import Image from 'next/image';
-import { styled, Paper, Typography, Avatar, Divider } from '@mui/material';
-import Grid2 from '@mui/material/Unstable_Grid2';
+
 import { useTranslation } from 'next-i18next';
+
+import { Avatar, Divider, Paper, styled, Typography } from '@mui/material';
+import Grid2 from '@mui/material/Unstable_Grid2';
 
 import ContentWrapper from '../ContentWrapper';
 

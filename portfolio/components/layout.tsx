@@ -1,6 +1,9 @@
-import React, { ReactNode, useState, useEffect } from 'react';
-import Head from 'next/head';
+import type { ReactNode} from 'react';
+import React, { useEffect, useState } from 'react';
+
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
+
 import { styled } from '@mui/material/styles';
 
 import theme from './theme';

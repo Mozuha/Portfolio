@@ -1,13 +1,18 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
 import { useRouter } from 'next/router';
-import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
+
+import { Menu, MenuItem, ProSidebar, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import Link from 'react-scroll/modules/components/Link';
-import { styled, Slide, Switch } from '@mui/material';
+
+import { Slide, styled, Switch } from '@mui/material';
+
 import { MdMenu } from 'react-icons/md';
 
-import { MenuItemInfo } from './types';
 import { menuItems } from './menuItemInfo';
+
+import type { MenuItemInfo } from './types';
 
 const SidebarMobile = (): JSX.Element => {
   const router = useRouter();
@@ -38,7 +43,7 @@ const SidebarMobile = (): JSX.Element => {
 
   // determine which content is currently on screen according to the spy result
   const handleActive = useCallback((id: number, active: boolean) => {
-    let newMenuItems = [...items];
+    const newMenuItems = [...items];
     newMenuItems[id]!.isActive = active ? true : false;
     setItems(newMenuItems);
   }, []);
@@ -48,7 +53,7 @@ const SidebarMobile = (): JSX.Element => {
       <SidebarHeaderWrapper>
         <ProSidebar>
           <SidebarHeader>
-            <MdMenu color={'#333'} size={42} onClick={handleMenuClick} />
+            <MdMenu color="#333" size={42} onClick={handleMenuClick} />
             <Link to="top" href="top" smooth={true} offset={-64} style={{ textDecoration: 'none' }}>
               <span className="logo">Mizuki Hashimoto</span>
             </Link>

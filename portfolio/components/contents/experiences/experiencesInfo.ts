@@ -1,4 +1,4 @@
-import { ExperienceInfo } from './types';
+import type { ExperienceInfo } from './types';
 
 export const experiencesInfo: ExperienceInfo[] = [
   {

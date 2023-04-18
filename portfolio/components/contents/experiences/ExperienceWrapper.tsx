@@ -1,8 +1,10 @@
 import React from 'react';
-import { styled, Card, CardContent, Divider, Typography } from '@mui/material';
+
 import { useTranslation } from 'next-i18next';
 
-import { ExperienceInfo } from './types';
+import { Card, CardContent, Divider, styled, Typography } from '@mui/material';
+
+import type { ExperienceInfo } from './types';
 
 type Props = {
   experienceInfo: ExperienceInfo;

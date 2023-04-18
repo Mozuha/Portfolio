@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { styled } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
 
-import ContentWrapper from '../ContentWrapper';
-import ExperienceWrapper from './ExperienceWrapper';
 import { experiencesInfo } from './experiencesInfo';
+import ExperienceWrapper from './ExperienceWrapper';
+import ContentWrapper from '../ContentWrapper';
 
 const Experiences = () => {
   return (

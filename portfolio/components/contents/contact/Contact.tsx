@@ -1,9 +1,11 @@
 import React from 'react';
-import { styled, Paper, IconButton } from '@mui/material';
+
+import { IconButton, Paper, styled } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { MdMailOutline } from 'react-icons/md';
+
 import { AiFillLinkedin } from 'react-icons/ai';
 import { AiOutlineGithub } from 'react-icons/ai';
+import { MdMailOutline } from 'react-icons/md';
 
 import ContentWrapper from '../ContentWrapper';
 

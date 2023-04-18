@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Image from 'next/image';
+
 import { Slide } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -26,7 +28,7 @@ const Top = (): JSX.Element => {
             <h1>
               Hello!
               <br />
-              I'm Mizuki
+              I&apos;m Mizuki
             </h1>
           </Slide>
         </WelcomeMsgWrapper>

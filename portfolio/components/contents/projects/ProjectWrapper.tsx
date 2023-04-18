@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
+
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import {
-  styled,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  IconButton,
-  Typography,
-  Collapse,
-  Fade,
-} from '@mui/material';
-import { MdExpandLess } from 'react-icons/md';
-import { BiLinkExternal } from 'react-icons/bi';
-import { AiOutlineGithub } from 'react-icons/ai';
-import { SiQiita } from 'react-icons/si';
+
 import clsx from 'clsx';
 import { useTranslation } from 'next-i18next';
 
-import { ProjectInfo } from './types';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Collapse,
+  Fade,
+  IconButton,
+  styled,
+  Typography,
+} from '@mui/material';
+
+import { AiOutlineGithub } from 'react-icons/ai';
+import { BiLinkExternal } from 'react-icons/bi';
+import { MdExpandLess } from 'react-icons/md';
+import { SiQiita } from 'react-icons/si';
+
+import type { ProjectInfo } from './types';
 
 type Props = {
   projectInfo: ProjectInfo;

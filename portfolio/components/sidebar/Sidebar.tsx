@@ -1,13 +1,17 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
+
 import { useRouter } from 'next/router';
-import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
+
+import { Menu, MenuItem, ProSidebar, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import Link from 'react-scroll/modules/components/Link';
-import Switch from '@mui/material/Switch';
-import { styled } from '@mui/material/styles';
 
-import { MenuItemInfo } from './types';
+import { styled } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
+
 import { menuItems } from './menuItemInfo';
+
+import type { MenuItemInfo } from './types';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -21,7 +25,7 @@ const Sidebar = () => {
 
   // determine which content is currently on screen according to the spy result
   const handleActive = useCallback((id: number, active: boolean) => {
-    let newMenuItems = [...items];
+    const newMenuItems = [...items];
     newMenuItems[id]!.isActive = active ? true : false;
     setItems(newMenuItems);
   }, []);
