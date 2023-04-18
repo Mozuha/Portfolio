@@ -45,7 +45,7 @@ export const projectsInfo: ProjectInfo[] = [
     description: 'My Portfolio',
     purpose: 'Learn React framework.',
     techStack: 'TypeScript, React, Next.js, Vercel',
-    note: 'Currently considering a better language switching and internationalization.',
+    note: 'Took user friendliness, responsive design, and Lighthouse scores into account. Currently considering to make it JAMstack for easier text updates.',
     link: 'https://portfolio-mozuha.vercel.app/',
     github: 'https://github.com/Mozuha/Portfolio',
   },

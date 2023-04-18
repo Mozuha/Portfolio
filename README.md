@@ -5,7 +5,7 @@
 ## Overview
 
 This is my portfolio page.  
-The page design is significantly inspired by [this page](https://andrewborstein.com/ "Andrew Borstein's portfolio"). This is a landing-page-only page, thus is simple and easy to follow the contents. Also, the page is responsive.  
+The page design is significantly inspired by [this page](https://andrewborstein.com/ "Andrew Borstein's portfolio"). This is a landing-page-only page, thus is simple and easy to follow the contents. Also, the page is responsive. Ocasionally working on performance improvements (SSG, dynamic import, Next Image, etc.)
 The contents are available in English and Japanese.
 
 Deployed on Vercel :point_right: [Portfolio](https://portfolio-mozuha.vercel.app/ 'Portfolio')
@@ -25,10 +25,14 @@ $ yarn build | yarn start  # or yarn dev
 - Material UI 5.12.0
 - [React Pro Sidebar](https://github.com/azouaoui-med/react-pro-sidebar 'React Pro Sidebar') 0.6.0
 - [React Scroll](https://github.com/fisshy/react-scroll 'React Scroll') 1.8.2
+- [next-i18next](https://github.com/i18next/next-i18next 'next-i18next') 13.2.2
 
 ## Next features ideas...
 
-- Better language switching and internationalization
+- Do not route upon language switch (i.e. just change texts in components)
+- Make it JAMstack for easier text updates
+- Reconsider fonts and design (utilize Figma)
+- Reduce layout shifts especially for mobile view
 
 ## License
 

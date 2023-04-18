@@ -21,6 +21,6 @@
   "Portfolio": {
     "description": "My Portfolio",
     "purpose": "Learn React framework.",
-    "note": "Currently considering a better language switching and internationalization."
+    "note": "Took user friendliness, responsive design, and Lighthouse scores into account. Currently considering to make it JAMstack for easier text updates."
   }
 }
