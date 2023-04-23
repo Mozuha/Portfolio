@@ -9,7 +9,7 @@ export const experiencesInfo: ExperienceInfo[] = [
     techStack: 'TypeScript, React, Next.js',
     description:
       'Collaborated with product team members to work on new feature implementation,\
-     refactoring, debugging, etc. on a web application.',
+     refactoring, debugging, etc. on a web application in a scrum environment.',
   },
   {
     title: 'Muni-Link',
