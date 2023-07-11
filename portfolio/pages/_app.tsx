@@ -1,9 +1,12 @@
+import { Suspense } from 'react';
+
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import { CacheProvider } from '@emotion/react';
 import { appWithTranslation } from 'next-i18next';
 
+import { Box, CircularProgress } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -29,13 +32,22 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: My
         <title>Mizuki | Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <Suspense
+        fallback={
+          <Box sx={{ margin: '50vh 50vw', color: '#346751' }}>
+            <CircularProgress color="inherit" />
+          </Box>
+        }
+      >
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </Suspense>
     </CacheProvider>
   );
 };
