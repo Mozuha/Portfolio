@@ -23,7 +23,7 @@ const SubtitleWrapper = styled('h2')(({ theme }) => ({
   margin: 0,
   color: theme.palette.primary.main,
   //backgroundColor: '#008073',
-  backgroundColor: '#346751',
+  backgroundColor: theme.palette.darkGreen.main,
 }));
 
 export default ContentWrapper;

@@ -53,6 +53,7 @@ const SkillsPaper = styled(Paper)(({ theme }) => ({
     margin: 0,
     marginTop: 12,
   },
+  borderRadius: '16px',
 }));
 
 export default Skills;

@@ -144,12 +144,12 @@ const SidebarWrapper = styled('div')(({ theme }) => ({
             userSelect: 'none',
           },
           '.MuiSwitch-switchBase': {
-            color: '#346751',
+            color: theme.palette.darkGreen.main,
           },
           '.Mui-checked': {
-            color: '#346751',
+            color: theme.palette.darkGreen.main,
             '& + .MuiSwitch-track': {
-              backgroundColor: '#346751',
+              backgroundColor: theme.palette.darkGreen.main,
             },
           },
         },

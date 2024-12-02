@@ -8,7 +8,7 @@
     "start": "next start",
     "export": "yarn build && next export",
     "serve": "yarn export && serve ./out",
-    "format": "prettier --write **/*.{js,ts,tsx,json,md,html}",
+    "format": "prettier --write '**/*.{js,ts,tsx,json,md,html}'",
     "lint": "next lint",
     "lint:fix": "yarn lint --fix",
     "analyze": "ANALYZE=true next build"
@@ -17,6 +17,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
+    "@mui/lab": "^6.0.0-beta.17",
     "@mui/material": "^5.12.0",
     "@mui/styles": "^5.12.0",
     "@next/bundle-analyzer": "^13.3.0",

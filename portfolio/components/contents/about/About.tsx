@@ -51,6 +51,7 @@ const ItemGrid = styled(Grid2)({
 const ProfilePaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.primary.dark,
   boxShadow: theme.shadows[5],
+  borderRadius: '16px',
   padding: 50,
   '& p': {
     margin: '20px 0',

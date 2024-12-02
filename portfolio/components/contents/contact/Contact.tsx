@@ -79,6 +79,7 @@ const ContactPaper = styled(Paper)(({ theme }) => ({
   padding: 50,
   backgroundColor: theme.palette.primary.dark,
   boxShadow: theme.shadows[5],
+  borderRadius: '16px',
 }));
 
 const ContainerGrid = styled(Grid2)({

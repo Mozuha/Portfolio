@@ -122,6 +122,7 @@ const ProjectCard = styled(Card)(({ theme }) => ({
   boxShadow: theme.shadows[5],
   width: 305,
   height: 400,
+  borderRadius: '16px',
 }));
 
 const ProjectCardMedia = styled(CardMedia)({
@@ -194,11 +195,11 @@ const LinkCardActions = styled(CardActions)({
   },
 });
 
-const LinkIconButton = styled(IconButton)({
+const LinkIconButton = styled(IconButton)(({ theme }) => ({
   '&:hover': {
-    color: '#346751',
+    color: theme.palette.darkGreen.main,
   },
-});
+}));
 
 const GitHubIconButton = styled(IconButton)({
   '&:hover': {

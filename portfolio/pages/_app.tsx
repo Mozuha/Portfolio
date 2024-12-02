@@ -34,7 +34,7 @@ const App = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: My
       </Head>
       <Suspense
         fallback={
-          <Box sx={{ margin: '50vh 50vw', color: '#346751' }}>
+          <Box sx={{ margin: '50vh 50vw', color: 'darkGreen.main' }}>
             <CircularProgress color="inherit" />
           </Box>
         }

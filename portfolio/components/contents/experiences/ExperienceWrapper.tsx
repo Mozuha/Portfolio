@@ -50,6 +50,7 @@ const ExperienceWrapper = ({ experienceInfo }: Props): JSX.Element => {
 const ExperienceCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.primary.dark,
   boxShadow: theme.shadows[5],
+  borderRadius: '16px',
 }));
 
 const ExperienceCardContent = styled(CardContent)({
