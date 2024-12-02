@@ -27,13 +27,6 @@ $ yarn build | yarn start  # or yarn dev
 - [React Scroll](https://github.com/fisshy/react-scroll 'React Scroll') 1.8.2
 - [next-i18next](https://github.com/i18next/next-i18next 'next-i18next') 13.2.2
 
-## Next features ideas...
-
-- Do not route upon language switch (i.e. just change texts in components)
-- Make it JAMstack for easier text updates
-- Reconsider fonts and design (utilize Figma)
-- Reduce layout shifts especially for mobile view
-
 ## License
 
 Portfolio is under MIT license.

@@ -14,12 +14,12 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#f9e6cc', // '#faebd7'
-      dark: '#f9e6cc',
+      main: '#f6d4b1', // '#faebd7'
+      dark: '#f6d4b1',
     },
     text: {
-      primary: '#2c2217', // 'hsl(0 0% 15%)'
-      secondary: '#5f4b32', // '#666'
+      primary: '#525252', // 'hsl(0 0% 15%)'
+      secondary: '#666',
     },
     divider: 'rgba(0, 0, 0, 0.48)',
     darkGreen: {

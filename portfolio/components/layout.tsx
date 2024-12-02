@@ -21,7 +21,7 @@ const Layout = ({ children }: Props) => {
 
   useEffect(() => {
     document.body.style.margin = '0';
-    document.body.style.fontFamily = 'Georgia, serif';
+    document.body.style.fontFamily = 'Georgia, Meiryo UI, serif';
     document.body.style.backgroundColor = theme.palette.primary.main;
 
     // avoid 'window is not defined' error which probably caused by SSR
