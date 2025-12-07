@@ -35,7 +35,7 @@
     "react-is": "^17.0.2",
     "react-pro-sidebar": "^0.6.0",
     "react-scroll": "^1.8.2",
-    "sharp": "^0.32.0"
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@types/node": "15.0.0",
